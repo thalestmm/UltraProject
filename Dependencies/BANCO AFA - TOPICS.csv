@@ -1,0 +1,182 @@
+id,discipline,area,subject
+0,MATEMÁTICA,NOÇÕES DE CONJUNTOS,Igualdade de conjuntos
+1,MATEMÁTICA,NOÇÕES DE CONJUNTOS,Subconjuntos
+2,MATEMÁTICA,NOÇÕES DE CONJUNTOS,Operações com conjuntos
+3,MATEMÁTICA,NOÇÕES DE CONJUNTOS,Resolução de problemas
+4,MATEMÁTICA,CONJUNTOS NUMÉRICOS,"Conjuntos numéricos: naturais, inteiros, racionais e reais"
+5,MATEMÁTICA,CONJUNTOS NUMÉRICOS,"Propriedades, operações e resolução de problemas"
+6,MATEMÁTICA,CONJUNTOS NUMÉRICOS,Intervalos reais
+7,MATEMÁTICA,FUNÇÕES,Noção intuitiva e definição
+8,MATEMÁTICA,FUNÇÕES,Notação de função
+9,MATEMÁTICA,FUNÇÕES,"Domínio, imagem e contradomínio"
+10,MATEMÁTICA,FUNÇÕES,Análise de gráfico
+11,MATEMÁTICA,FUNÇÕES,Crescimento e decrescimento de função
+12,MATEMÁTICA,FUNÇÕES,Paridade de função
+13,MATEMÁTICA,FUNÇÕES,"Função: sobrejetora, injetora e bijetoras"
+14,MATEMÁTICA,FUNÇÕES,Composição de função
+15,MATEMÁTICA,FUNÇÕES,Função inversa
+16,MATEMÁTICA,FUNÇÕES,"Funções: afim, quadrática, modular, exponencial, logarítmica e recíproca"
+17,MATEMÁTICA,FUNÇÕES,"Logaritmos: definição, propriedades e resolução de problemas"
+18,MATEMÁTICA,SEQUÊNCIAS,Definição
+19,MATEMÁTICA,SEQUÊNCIAS,Progressões Aritméticas
+20,MATEMÁTICA,SEQUÊNCIAS,Progressões Geométricas
+21,MATEMÁTICA,TRIGONOMETRIA,Arcos e ángulos
+22,MATEMÁTICA,TRIGONOMETRIA,Circunferência trigonométrica
+23,MATEMÁTICA,TRIGONOMETRIA,Funções trigonométricas e funções trigonométricas inversas
+24,MATEMÁTICA,TRIGONOMETRIA,Relações fundamentais
+25,MATEMÁTICA,TRIGONOMETRIA,Redução ao 1º quadrante
+26,MATEMÁTICA,TRIGONOMETRIA,Relações de identidade e transformações
+27,MATEMÁTICA,TRIGONOMETRIA,Equações e inequações
+28,MATEMÁTICA,TRIGONOMETRIA,Triângulo retângulo
+29,MATEMÁTICA,TRIGONOMETRIA,"Triângulo qualquer: lei dos senos, lei dos cossenos e área"
+30,MATEMÁTICA,"MATRIZES, DETERMINANTES E SISTEMAS LINEARES","Matriz: conceito, tipos especiais, operações e inversa"
+31,MATEMÁTICA,"MATRIZES, DETERMINANTES E SISTEMAS LINEARES","Determinantes: conceito, resolução, propriedades e aplicações"
+32,MATEMÁTICA,"MATRIZES, DETERMINANTES E SISTEMAS LINEARES",Sistemas lineares: resolução e discussão
+33,MATEMÁTICA,GEOMETRIA ESPACIAL,Poliedros convexos e não convexos
+34,MATEMÁTICA,GEOMETRIA ESPACIAL,Poliedros de Platão
+35,MATEMÁTICA,GEOMETRIA ESPACIAL,"Prismas: elementos, classificação, cálculo de área e volume"
+36,MATEMÁTICA,GEOMETRIA ESPACIAL,"Pirâmide e tronco de pirâmide: elementos, classificação, cálculo de área e volume"
+37,MATEMÁTICA,GEOMETRIA ESPACIAL,"Cilindro: elementos, classificação, seção longitudinal e seção transversal, cálculo de área e volume"
+38,MATEMÁTICA,GEOMETRIA ESPACIAL,"Cone e tronco de cone: elementos, classificação, seção meridiana, cálculo de área e volume"
+39,MATEMÁTICA,GEOMETRIA ESPACIAL,"Esfera: elementos, seções, fuso esférico, cunha esférica, cálculo de área e volume."
+40,MATEMÁTICA,GEOMETRIA ESPACIAL,Inscrição e Circunscrição de sólidos
+41,MATEMÁTICA,GEOMETRIA PLANA,Congruência de figuras planas
+42,MATEMÁTICA,GEOMETRIA PLANA,Semelhança de triângulos
+43,MATEMÁTICA,GEOMETRIA PLANA,"Relações métricas nos triângulos, polígonos regulares e círculos"
+44,MATEMÁTICA,GEOMETRIA PLANA,"Áreas de polígonos, círculo, coroa e setor circular"
+45,MATEMÁTICA,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Princípio Fundamental de Contagem
+46,MATEMÁTICA,ANÁLISE COMBINATÓRIA E PROBABILIDADE,"Arranjos, permutações e combinações"
+47,MATEMÁTICA,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Permutações com elementos repetidos
+48,MATEMÁTICA,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Binômio de Newton: termo geral e triângulo de Pascal
+49,MATEMÁTICA,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Probabilidade
+50,MATEMÁTICA,GEOMETRIA ANALÍTICA,"Coordenadas cartesianas no plano: distância entre dois pontos, ponto médio, condição de alinhamento de três pontos, mediana e baricentro."
+51,MATEMÁTICA,GEOMETRIA ANALÍTICA,"Estudo da reta: equação geral, reduzida, segmentária e paramétrica; interseção de retas, paralelismo e perpendicularismo; distância entre ponto e reta; área de um triângulo; inequações do 1 o grau com duas incógnitas."
+52,MATEMÁTICA,GEOMETRIA ANALÍTICA,"Estudo da circunferência: equação reduzida e geral; posições relativas entre ponto e circunferência, entre reta e circunferências e entre duas circunferências; inequações do 2o grau com duas incógnitas."
+53,MATEMÁTICA,GEOMETRIA ANALÍTICA,"Cônicas: elipse, hipérbole e parábola (elementos e equações)."
+54,MATEMÁTICA,NÚMEROS COMPLEXOS,Operações com pares ordenados
+55,MATEMÁTICA,NÚMEROS COMPLEXOS,"Forma algébrica, conjugado, quociente de dois números complexos"
+56,MATEMÁTICA,NÚMEROS COMPLEXOS,Módulo e argumento
+57,MATEMÁTICA,NÚMEROS COMPLEXOS,Forma trigonométrica e forma polar
+58,MATEMÁTICA,NÚMEROS COMPLEXOS,Multiplicação e divisão
+59,MATEMÁTICA,NÚMEROS COMPLEXOS,Potenciação
+60,MATEMÁTICA,NÚMEROS COMPLEXOS,Radiciação
+61,MATEMÁTICA,NÚMEROS COMPLEXOS,Equações binômias e trinômias
+62,MATEMÁTICA,POLINÔMIOS,Definição
+63,MATEMÁTICA,POLINÔMIOS,Coeficiente dominante
+64,MATEMÁTICA,POLINÔMIOS,Função polinomial
+65,MATEMÁTICA,POLINÔMIOS,Polinômio nulo
+66,MATEMÁTICA,POLINÔMIOS,Valor numérico
+67,MATEMÁTICA,POLINÔMIOS,Raiz
+68,MATEMÁTICA,POLINÔMIOS,Polinômios iguais (ou idênticos)
+69,MATEMÁTICA,POLINÔMIOS,"Adição, subtração e multiplicação de polinômios"
+70,MATEMÁTICA,POLINÔMIOS,Divisão
+71,MATEMÁTICA,POLINÔMIOS,Divisões por (x – a)
+72,MATEMÁTICA,POLINÔMIOS,Teorema do resto
+73,MATEMÁTICA,POLINÔMIOS,Dispositivo prático de Briot-Ruffini
+74,MATEMÁTICA,POLINÔMIOS,Divisões sucessivas
+75,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Definição
+76,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Raiz
+77,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Teorema fundamental da álgebra
+78,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Teorema da decomposição
+79,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Multiplicidade de uma raiz
+80,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Relações de Girard
+81,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Raízes complexas
+82,MATEMÁTICA,EQUAÇÕES ALGÉBRICAS,Teorema das raízes racionais
+83,MATEMÁTICA,ESTATÍSTICA BÁSICA,Variável
+84,MATEMÁTICA,ESTATÍSTICA BÁSICA,Tabelas de freqüência
+85,MATEMÁTICA,ESTATÍSTICA BÁSICA,Representações gráficas
+86,MATEMÁTICA,ESTATÍSTICA BÁSICA,Medidas de centralidade
+87,MATEMÁTICA,ESTATÍSTICA BÁSICA,Medidas de dispersão
+88,MATEMÁTICA,ESTATÍSTICA BÁSICA,"Medidas de centralidade e dispersão para dados agrupados: cálculo do desvio padrão, da classe modal e cálculo da mediana"
+89,FÍSICA,CINEMÁTICA ESCALAR,Movimento Uniforme
+90,FÍSICA,CINEMÁTICA ESCALAR,Movimento com velocidade escalar variável e Movimento Uniformemente Variado
+91,FÍSICA,CINEMÁTICA ESCALAR,Movimento Vertical no Vácuo
+92,FÍSICA,CINEMÁTICA ESCALAR,Gráficos do Movimento Uniforme e do Movimento Uniformemente Variado
+93,FÍSICA,CINEMÁTICA VETORIAL,Vetores
+94,FÍSICA,CINEMÁTICA VETORIAL,Velocidade e aceleração vetoriais
+95,FÍSICA,CINEMÁTICA VETORIAL,Movimentos circulares
+96,FÍSICA,CINEMÁTICA VETORIAL,Lançamento horizontal e lançamento oblíquo no vácuo
+97,FÍSICA,DINÂMICA,Princípios fundamentais
+98,FÍSICA,DINÂMICA,Leis de Newton
+99,FÍSICA,DINÂMICA,Forças de atrito
+100,FÍSICA,DINÂMICA,Forças em trajetória curvilíneas
+101,FÍSICA,DINÂMICA,Trabalho e energia
+102,FÍSICA,DINÂMICA,Impulso e Quantidade de Movimento
+103,FÍSICA,DINÂMICA,Gravitação Universal
+104,FÍSICA,ESTÁTICA,Equilíbrio do ponto material
+105,FÍSICA,ESTÁTICA,Equilíbrio dos corpos extensos
+106,FÍSICA,ESTÁTICA,Hidrostática
+107,FÍSICA,TERMOLOGIA,Introdução à termologia
+108,FÍSICA,TERMOLOGIA,Termometria
+109,FÍSICA,TERMOLOGIA,Dilatação térmica de sólidos e líquidos
+110,FÍSICA,CALOR,Calorimetria
+111,FÍSICA,CALOR,Mudanças de fase
+112,FÍSICA,CALOR,Diagramas de fase
+113,FÍSICA,CALOR,Propagação do calor
+114,FÍSICA,TERMODINÂMICA,Estudo dos gases
+115,FÍSICA,TERMODINÂMICA,As leis da Termodinâmica
+116,FÍSICA,ÓPTICA,Óptica geométrica
+117,FÍSICA,ÓPTICA,Reflexão da luz e Espelhos planos
+118,FÍSICA,ÓPTICA,Espelhos esféricos
+119,FÍSICA,ÓPTICA,Refração luminosa
+120,FÍSICA,ÓPTICA,Lentes esféricas delgadas
+121,FÍSICA,ÓPTICA,Instrumentos ópticos
+122,FÍSICA,ONDAS,Movimento harmônico simples (MHS)
+123,FÍSICA,ONDAS,Ondas
+124,FÍSICA,ONDAS,Interferência de ondas
+125,FÍSICA,ONDAS,Ondas sonoras
+126,FÍSICA,ELETROSTÁTICA,Eletrização e Força elétrica
+127,FÍSICA,ELETROSTÁTICA,Campo elétrico
+128,FÍSICA,ELETROSTÁTICA,Trabalho e potencial elétrico
+129,FÍSICA,ELETROSTÁTICA,Condutores em equilíbrio eletrostático e Capacitância eletrostática
+130,FÍSICA,ELETRODINÂMICA,Corrente elétrica
+131,FÍSICA,ELETRODINÂMICA,Resistores
+132,FÍSICA,ELETRODINÂMICA,Medidas elétricas
+133,FÍSICA,ELETRODINÂMICA,Geradores e Receptores elétricos
+134,FÍSICA,ELETRODINÂMICA,Capacitores
+135,FÍSICA,ELETROMAGNETISMO,Campo magnético
+136,FÍSICA,ELETROMAGNETISMO,Força magnética
+137,FÍSICA,ELETROMAGNETISMO,Indução eletromagnética
+138,FÍSICA,FÍSICA MODERNA,Noções de física quântica: Teoria dos Quanta
+139,FÍSICA,FÍSICA MODERNA,Efeito Fotoelétrico
+140,FÍSICA,FÍSICA MODERNA,Célula fotoelétrica
+141,FÍSICA,FÍSICA MODERNA,O Átomo de Bohr
+142,FÍSICA,FÍSICA MODERNA,"A Natureza ""Dual"" da Luz"
+143,FÍSICA,FÍSICA MODERNA,Dualidade Onda-partícula: a Hipótese de Broglie
+144,FÍSICA,FÍSICA MODERNA,Princípio da Incerteza de Heisenberg
+145,FÍSICA,FÍSICA MODERNA,Relatividade Especial: Relatividade na Física Clássica
+146,FÍSICA,FÍSICA MODERNA,Relatividade Galileana
+147,FÍSICA,FÍSICA MODERNA,Experiência de Michelson-Morley
+148,FÍSICA,FÍSICA MODERNA,Relatividade de Einstein: postulados da Teoria da Relatividade Especial
+149,FÍSICA,FÍSICA MODERNA,Modificações na Relatividade Galileana
+150,FÍSICA,FÍSICA MODERNA,Contração do comprimento
+151,FÍSICA,FÍSICA MODERNA,Dilatação do tempo
+152,FÍSICA,FÍSICA MODERNA,Composição relativística de velocidades
+153,FÍSICA,FÍSICA MODERNA,Massa e Energia
+154,FÍSICA,FÍSICA MODERNA,Energia e Quantidade de Movimento
+155,PORTUGUÊS,ESTUDO DE TEXTO,"Intelecção de textos literários e não literários, verbais e não verbais."
+156,PORTUGUÊS,GRAMÁTICA,"Fonologia: fonemas, encontros consonantais e vocálicos, dígrafos, divisão silábica, acentuação gráfica e ortografia (conforme a nova ortografia)"
+157,PORTUGUÊS,GRAMÁTICA,"Morfologia: estrutura das palavras, formação de palavras, classes de palavras: classificação,
+flexão e emprego (substantivo, adjetivo, artigo, numeral, pronome, verbo, advérbio, preposição,
+conjunção e interjeição)"
+158,PORTUGUÊS,GRAMÁTICA," Sintaxe: análise sintática da oração, análise sintática do período, pontuação, regência e
+concordância, estudo da crase, colocação pronominal"
+159,PORTUGUÊS,SEMÂNTICA E ESTILÍSTICA,Variedades linguísticas
+160,PORTUGUÊS,SEMÂNTICA E ESTILÍSTICA,"Sinonímia e antonímia, hiponímia e hiperonímia, polissemia, ambiguidade"
+161,PORTUGUÊS,SEMÂNTICA E ESTILÍSTICA,"Denotação e Conotação, figuras de linguagem, funções da linguagem, e vícios da linguagem"
+162,PORTUGUÊS,SEMÂNTICA E ESTILÍSTICA,Versificação
+163,INGLÊS,COMPREENSÃO E INTERPRETAÇÃO DE TEXTOS,Compreensão e interpretação de textos
+164,INGLÊS,ESTRUTURAS GRAMATICAIS,"Substantivos: gênero, número, contáveis e incontáveis"
+165,INGLÊS,ESTRUTURAS GRAMATICAIS,"Pronomes: pessoal, oblíquo, possessivo, reflexivo, demonstrativo, relativo, indefinido e interrogativo"
+166,INGLÊS,ESTRUTURAS GRAMATICAIS,Adjetivos: graus comparativo e superlativo
+167,INGLÊS,ESTRUTURAS GRAMATICAIS,Preposições
+168,INGLÊS,ESTRUTURAS GRAMATICAIS,Conjunções
+169,INGLÊS,ESTRUTURAS GRAMATICAIS,Advérbios
+170,INGLÊS,ESTRUTURAS GRAMATICAIS,Numerais
+171,INGLÊS,ESTRUTURAS GRAMATICAIS,Artigos: definidos e indefinidos
+172,INGLÊS,ESTRUTURAS GRAMATICAIS,"Verbos: tempos, modos, formas e vozes"
+173,INGLÊS,ESTRUTURAS GRAMATICAIS,Caso possessivo
+174,INGLÊS,ESTRUTURAS GRAMATICAIS,Questiontag e respostas curtas
+175,INGLÊS,ESTRUTURAS GRAMATICAIS,Estrutura da oração
+176,INGLÊS,ESTRUTURAS GRAMATICAIS,"Período composto: orações condicionais, relativas, apositivas, etc"
+177,INGLÊS,ESTRUTURAS GRAMATICAIS,Discursos: direto e indireto
