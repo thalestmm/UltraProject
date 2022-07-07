@@ -77,14 +77,24 @@ class QuestionID:
         return None
 
 
-class HTMLString(str):
+@dataclass
+class HTMLString:
     """
     Baseclass for HMTL Strings (both on the question text and alternatives).
     """
-    pass
+    content: str
+
+    def __repr__(self):
+        return self.add_paragraph_tags(self.content)
+
+    @staticmethod
+    def add_paragraph_tags(text: str) -> str:
+        return f"<p>{text}</p>"
 
 
-class AlternativeModel(TypedDict):
+
+@dataclass
+class AlternativeModel:
     """
     Baseclass for each alternative dict.
     Each and every question must consist of 4 different alternatives.
@@ -94,15 +104,31 @@ class AlternativeModel(TypedDict):
     B: HTMLString
     C: HTMLString
     D: HTMLString
+    answer: str
+
+    def __post_init__(self):
+        available_answers = ["A", "B", "C", "D"]
+
+        self.answer = self.answer.upper()
+
+        if self.answer not in available_answers:
+            logging.exception("Answer provided is not available")
+            raise ValueError("Answer must be either A, B, C or D")
 
 
-class OldExamModel(TypedDict):
+@dataclass
+class OldExamModel:
     """
     Baseclass for each Exam description.
     It's not a required parameter, but if chosen to be added, must follow this specific standard.
     """
     exam_name: str
     exam_year: int
+
+    def __repr__(self):
+        if self.exam_name is None and self.exam_year is None:
+            # This means there wasn't an Old Exam entry
+            return None
 
 
 @dataclass
@@ -117,6 +143,9 @@ class BaseQuestionModel:
     difficulty_level: int = 3
     question_id = QuestionID()
     has_auxiliary_image: bool = False
+    # discipline
+    # area
+    # content
 
     def __post_init__(self):
         """
@@ -124,7 +153,8 @@ class BaseQuestionModel:
         :return: None
         """
         self.question_id = str(self.question_id)
-        if self.difficulty_level not in range(1, 6):
+
+        if int(self.difficulty_level) not in range(1, 6):
             logging.exception(f"Difficulty level entered ({self.difficulty_level}) outside of the desired range.")
             raise ValueError("Difficulty level must be an integer between 1 and 5.")
 
@@ -153,16 +183,45 @@ def create_questions_folder() -> None:
     return None
 
 
-if __name__ == "__main__":
-    new_question = BaseQuestionModel(
-        difficulty_level=1,
-        question_text='Quinto é 2 + 2?',
-        alternatives={"A": "23",
-                      "B": "4",
-                      "C": "6",
-                      "D": "5"}
-    )
-    # export_into_json(new_question)
+def add_new_question_via_console() -> None:
+    question_text = input("Texto da questão: ")
+    alt_a = input("Alternativa A: ")
+    alt_b = input("Alternativa B: ")
+    alt_c = input("Alternativa C: ")
+    alt_d = input("Alternativa D: ")
+    answer = input("Alternativa resposta (A, B, C ou D): ")
+    nome_concurso = input("Nome do Concurso: ")
+    ano_concurso  = input("Ano do Concurso: ")
+    difficulty = input("Dificuldade da Questão (1 a 5): ")
+    has_aux_img = input("Possui imagem auxiliar? (S ou N): ").upper()
 
-    # print(id(new_question))
-    create_questions_folder()
+    if has_aux_img == "S":
+        has_aux_img = True
+    else:
+        has_aux_img = False
+
+    alternatives = AlternativeModel(
+        A = alt_a,
+        B = alt_b,
+        C = alt_c,
+        D = alt_d,
+        answer = answer
+    )
+    exam_data = OldExamModel(
+        exam_name= nome_concurso,
+        exam_year= ano_concurso
+    )
+
+    new_question = BaseQuestionModel(
+        question_text= question_text,
+        alternatives= alternatives.__dict__,
+        exam_description=exam_data.__dict__,
+        difficulty_level=difficulty,
+        has_auxiliary_image=has_aux_img
+    )
+
+    export_into_json(new_question)
+
+
+if __name__ == "__main__":
+    add_new_question_via_console()
