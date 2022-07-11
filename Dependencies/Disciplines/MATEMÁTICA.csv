@@ -1,0 +1,90 @@
+id,area,subject
+0,NOÇÕES DE CONJUNTOS,Igualdade de conjuntos
+1,NOÇÕES DE CONJUNTOS,Subconjuntos
+2,NOÇÕES DE CONJUNTOS,Operações com conjuntos
+3,NOÇÕES DE CONJUNTOS,Resolução de problemas
+4,CONJUNTOS NUMÉRICOS,"Conjuntos numéricos: naturais, inteiros, racionais e reais"
+5,CONJUNTOS NUMÉRICOS,"Propriedades, operações e resolução de problemas"
+6,CONJUNTOS NUMÉRICOS,Intervalos reais
+7,FUNÇÕES,Noção intuitiva e definição
+8,FUNÇÕES,Notação de função
+9,FUNÇÕES,"Domínio, imagem e contradomínio"
+10,FUNÇÕES,Análise de gráfico
+11,FUNÇÕES,Crescimento e decrescimento de função
+12,FUNÇÕES,Paridade de função
+13,FUNÇÕES,"Função: sobrejetora, injetora e bijetoras"
+14,FUNÇÕES,Composição de função
+15,FUNÇÕES,Função inversa
+16,FUNÇÕES,"Funções: afim, quadrática, modular, exponencial, logarítmica e recíproca"
+17,FUNÇÕES,"Logaritmos: definição, propriedades e resolução de problemas"
+18,SEQUÊNCIAS,Definição
+19,SEQUÊNCIAS,Progressões Aritméticas
+20,SEQUÊNCIAS,Progressões Geométricas
+21,TRIGONOMETRIA,Arcos e ángulos
+22,TRIGONOMETRIA,Circunferência trigonométrica
+23,TRIGONOMETRIA,Funções trigonométricas e funções trigonométricas inversas
+24,TRIGONOMETRIA,Relações fundamentais
+25,TRIGONOMETRIA,Redução ao 1º quadrante
+26,TRIGONOMETRIA,Relações de identidade e transformações
+27,TRIGONOMETRIA,Equações e inequações
+28,TRIGONOMETRIA,Triângulo retângulo
+29,TRIGONOMETRIA,"Triângulo qualquer: lei dos senos, lei dos cossenos e área"
+30,"MATRIZES, DETERMINANTES E SISTEMAS LINEARES","Matriz: conceito, tipos especiais, operações e inversa"
+31,"MATRIZES, DETERMINANTES E SISTEMAS LINEARES","Determinantes: conceito, resolução, propriedades e aplicações"
+32,"MATRIZES, DETERMINANTES E SISTEMAS LINEARES",Sistemas lineares: resolução e discussão
+33,GEOMETRIA ESPACIAL,Poliedros convexos e não convexos
+34,GEOMETRIA ESPACIAL,Poliedros de Platão
+35,GEOMETRIA ESPACIAL,"Prismas: elementos, classificação, cálculo de área e volume"
+36,GEOMETRIA ESPACIAL,"Pirâmide e tronco de pirâmide: elementos, classificação, cálculo de área e volume"
+37,GEOMETRIA ESPACIAL,"Cilindro: elementos, classificação, seção longitudinal e seção transversal, cálculo de área e volume"
+38,GEOMETRIA ESPACIAL,"Cone e tronco de cone: elementos, classificação, seção meridiana, cálculo de área e volume"
+39,GEOMETRIA ESPACIAL,"Esfera: elementos, seções, fuso esférico, cunha esférica, cálculo de área e volume."
+40,GEOMETRIA ESPACIAL,Inscrição e Circunscrição de sólidos
+41,GEOMETRIA PLANA,Congruência de figuras planas
+42,GEOMETRIA PLANA,Semelhança de triângulos
+43,GEOMETRIA PLANA,"Relações métricas nos triângulos, polígonos regulares e círculos"
+44,GEOMETRIA PLANA,"Áreas de polígonos, círculo, coroa e setor circular"
+45,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Princípio Fundamental de Contagem
+46,ANÁLISE COMBINATÓRIA E PROBABILIDADE,"Arranjos, permutações e combinações"
+47,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Permutações com elementos repetidos
+48,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Binômio de Newton: termo geral e triângulo de Pascal
+49,ANÁLISE COMBINATÓRIA E PROBABILIDADE,Probabilidade
+50,GEOMETRIA ANALÍTICA,"Coordenadas cartesianas no plano: distância entre dois pontos, ponto médio, condição de alinhamento de três pontos, mediana e baricentro."
+51,GEOMETRIA ANALÍTICA,"Estudo da reta: equação geral, reduzida, segmentária e paramétrica; interseção de retas, paralelismo e perpendicularismo; distância entre ponto e reta; área de um triângulo; inequações do 1 o grau com duas incógnitas."
+52,GEOMETRIA ANALÍTICA,"Estudo da circunferência: equação reduzida e geral; posições relativas entre ponto e circunferência, entre reta e circunferências e entre duas circunferências; inequações do 2o grau com duas incógnitas."
+53,GEOMETRIA ANALÍTICA,"Cônicas: elipse, hipérbole e parábola (elementos e equações)."
+54,NÚMEROS COMPLEXOS,Operações com pares ordenados
+55,NÚMEROS COMPLEXOS,"Forma algébrica, conjugado, quociente de dois números complexos"
+56,NÚMEROS COMPLEXOS,Módulo e argumento
+57,NÚMEROS COMPLEXOS,Forma trigonométrica e forma polar
+58,NÚMEROS COMPLEXOS,Multiplicação e divisão
+59,NÚMEROS COMPLEXOS,Potenciação
+60,NÚMEROS COMPLEXOS,Radiciação
+61,NÚMEROS COMPLEXOS,Equações binômias e trinômias
+62,POLINÔMIOS,Definição
+63,POLINÔMIOS,Coeficiente dominante
+64,POLINÔMIOS,Função polinomial
+65,POLINÔMIOS,Polinômio nulo
+66,POLINÔMIOS,Valor numérico
+67,POLINÔMIOS,Raiz
+68,POLINÔMIOS,Polinômios iguais (ou idênticos)
+69,POLINÔMIOS,"Adição, subtração e multiplicação de polinômios"
+70,POLINÔMIOS,Divisão
+71,POLINÔMIOS,Divisões por (x – a)
+72,POLINÔMIOS,Teorema do resto
+73,POLINÔMIOS,Dispositivo prático de Briot-Ruffini
+74,POLINÔMIOS,Divisões sucessivas
+75,EQUAÇÕES ALGÉBRICAS,Definição
+76,EQUAÇÕES ALGÉBRICAS,Raiz
+77,EQUAÇÕES ALGÉBRICAS,Teorema fundamental da álgebra
+78,EQUAÇÕES ALGÉBRICAS,Teorema da decomposição
+79,EQUAÇÕES ALGÉBRICAS,Multiplicidade de uma raiz
+80,EQUAÇÕES ALGÉBRICAS,Relações de Girard
+81,EQUAÇÕES ALGÉBRICAS,Raízes complexas
+82,EQUAÇÕES ALGÉBRICAS,Teorema das raízes racionais
+83,ESTATÍSTICA BÁSICA,Variável
+84,ESTATÍSTICA BÁSICA,Tabelas de freqüência
+85,ESTATÍSTICA BÁSICA,Representações gráficas
+86,ESTATÍSTICA BÁSICA,Medidas de centralidade
+87,ESTATÍSTICA BÁSICA,Medidas de dispersão
+88,ESTATÍSTICA BÁSICA,"Medidas de centralidade e dispersão para dados agrupados: cálculo do desvio padrão, da classe modal e cálculo da mediana"

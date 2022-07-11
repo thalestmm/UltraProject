@@ -1,5 +1,6 @@
 import os
 from typing import List
+import pandas as pd
 
 
 def get_all_discipline_names() -> List[str]:
@@ -25,8 +26,25 @@ def list_all_areas_from_discipline(discipline_name: str) -> List[str]:
     :param discipline_name: discipline name, as registered in the Disciplines Dependencies folder.
     :return: List containing all the Areas (without repetition)
     """
-    pass
+    filepath = f"Dependencies/Disciplines/{discipline_name}.csv"
+    discipline_df = pd.read_csv(filepath, index_col="id")
+
+    return list(discipline_df["area"].unique())
+
+
+def list_all_subjects_from_area(discipline_name: str, area_name: str) -> List[str]:
+    """
+    List all the registered Subjects from the discipline's areas.
+    :param discipline_name: discipline name, as registered in the Disciplines Dependencies folder.
+    :param area_name: area name, as registered in the Disciplines Dependencies folder.
+    :return: List containing all the Subjects
+    """
+    filepath = f"Dependencies/Disciplines/{discipline_name}.csv"
+    discipline_df = pd.read_csv(filepath, index_col="id")
+
+    return list(discipline_df.loc[discipline_df.area == area_name]["subject"].unique())
 
 
 if __name__ == "__main__":
-    print(get_all_discipline_names())
+    print(list_all_areas_from_discipline("MATEMÁTICA"))
+    print(list_all_subjects_from_area("MATEMÁTICA", "NÚMEROS COMPLEXOS"))

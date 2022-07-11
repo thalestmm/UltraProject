@@ -6,6 +6,7 @@ import random
 import string
 import json
 import os
+import disciplines
 
 
 class QuestionID:
@@ -92,7 +93,6 @@ class HTMLString:
         return f"<p>{text}</p>"
 
 
-
 @dataclass
 class AlternativeModel:
     """
@@ -139,13 +139,13 @@ class BaseQuestionModel:
 
     question_text: HTMLString
     alternatives: AlternativeModel
+    discipline: str
+    area: str
+    content: str
     exam_description: Optional[OldExamModel] = None
     difficulty_level: int = 3
     question_id = QuestionID()
     has_auxiliary_image: bool = False
-    # discipline
-    # area
-    # content
 
     def __post_init__(self):
         """
@@ -157,6 +157,15 @@ class BaseQuestionModel:
         if int(self.difficulty_level) not in range(1, 6):
             logging.exception(f"Difficulty level entered ({self.difficulty_level}) outside of the desired range.")
             raise ValueError("Difficulty level must be an integer between 1 and 5.")
+
+        self.discipline = self.discipline.upper()
+        available_disciplines = disciplines.get_all_discipline_names()
+
+        if self.discipline not in available_disciplines:
+            logging.exception(f"'{self.discipline}' discipline not registered")
+            raise ValueError("Entered discipline not registered in the Dependencies Folder")
+
+        discipline_areas = disciplines.list_all_areas_from_discipline(self.discipline)
 
         logging.info(f"QUESTION of ID {self.question_id} generated")
 
@@ -191,7 +200,7 @@ def add_new_question_via_console() -> None:
     alt_d = input("Alternativa D: ")
     answer = input("Alternativa resposta (A, B, C ou D): ")
     nome_concurso = input("Nome do Concurso: ")
-    ano_concurso  = input("Ano do Concurso: ")
+    ano_concurso = input("Ano do Concurso: ")
     difficulty = input("Dificuldade da Questão (1 a 5): ")
     has_aux_img = input("Possui imagem auxiliar? (S ou N): ").upper()
 
@@ -201,20 +210,20 @@ def add_new_question_via_console() -> None:
         has_aux_img = False
 
     alternatives = AlternativeModel(
-        A = alt_a,
-        B = alt_b,
-        C = alt_c,
-        D = alt_d,
-        answer = answer
+        A=alt_a,
+        B=alt_b,
+        C=alt_c,
+        D=alt_d,
+        answer=answer
     )
     exam_data = OldExamModel(
-        exam_name= nome_concurso,
-        exam_year= ano_concurso
+        exam_name=nome_concurso,
+        exam_year=ano_concurso
     )
 
     new_question = BaseQuestionModel(
-        question_text= question_text,
-        alternatives= alternatives.__dict__,
+        question_text=question_text,
+        alternatives=alternatives.__dict__,
         exam_description=exam_data.__dict__,
         difficulty_level=difficulty,
         has_auxiliary_image=has_aux_img

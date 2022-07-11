@@ -1,0 +1,67 @@
+id,area,subject
+0,CINEMÁTICA ESCALAR,Movimento Uniforme
+1,CINEMÁTICA ESCALAR,Movimento com velocidade escalar variável e Movimento Uniformemente Variado
+2,CINEMÁTICA ESCALAR,Movimento Vertical no Vácuo
+3,CINEMÁTICA ESCALAR,Gráficos do Movimento Uniforme e do Movimento Uniformemente Variado
+4,CINEMÁTICA VETORIAL,Vetores
+5,CINEMÁTICA VETORIAL,Velocidade e aceleração vetoriais
+6,CINEMÁTICA VETORIAL,Movimentos circulares
+7,CINEMÁTICA VETORIAL,Lançamento horizontal e lançamento oblíquo no vácuo
+8,DINÂMICA,Princípios fundamentais
+9,DINÂMICA,Leis de Newton
+10,DINÂMICA,Forças de atrito
+11,DINÂMICA,Forças em trajetória curvilíneas
+12,DINÂMICA,Trabalho e energia
+13,DINÂMICA,Impulso e Quantidade de Movimento
+14,DINÂMICA,Gravitação Universal
+15,ESTÁTICA,Equilíbrio do ponto material
+16,ESTÁTICA,Equilíbrio dos corpos extensos
+17,ESTÁTICA,Hidrostática
+18,TERMOLOGIA,Introdução à termologia
+19,TERMOLOGIA,Termometria
+20,TERMOLOGIA,Dilatação térmica de sólidos e líquidos
+21,CALOR,Calorimetria
+22,CALOR,Mudanças de fase
+23,CALOR,Diagramas de fase
+24,CALOR,Propagação do calor
+25,TERMODINÂMICA,Estudo dos gases
+26,TERMODINÂMICA,As leis da Termodinâmica
+27,ÓPTICA,Óptica geométrica
+28,ÓPTICA,Reflexão da luz e Espelhos planos
+29,ÓPTICA,Espelhos esféricos
+30,ÓPTICA,Refração luminosa
+31,ÓPTICA,Lentes esféricas delgadas
+32,ÓPTICA,Instrumentos ópticos
+33,ONDAS,Movimento harmônico simples (MHS)
+34,ONDAS,Ondas
+35,ONDAS,Interferência de ondas
+36,ONDAS,Ondas sonoras
+37,ELETROSTÁTICA,Eletrização e Força elétrica
+38,ELETROSTÁTICA,Campo elétrico
+39,ELETROSTÁTICA,Trabalho e potencial elétrico
+40,ELETROSTÁTICA,Condutores em equilíbrio eletrostático e Capacitância eletrostática
+41,ELETRODINÂMICA,Corrente elétrica
+42,ELETRODINÂMICA,Resistores
+43,ELETRODINÂMICA,Medidas elétricas
+44,ELETRODINÂMICA,Geradores e Receptores elétricos
+45,ELETRODINÂMICA,Capacitores
+46,ELETROMAGNETISMO,Campo magnético
+47,ELETROMAGNETISMO,Força magnética
+48,ELETROMAGNETISMO,Indução eletromagnética
+49,FÍSICA MODERNA,Noções de física quântica: Teoria dos Quanta
+50,FÍSICA MODERNA,Efeito Fotoelétrico
+51,FÍSICA MODERNA,Célula fotoelétrica
+52,FÍSICA MODERNA,O Átomo de Bohr
+53,FÍSICA MODERNA,"A Natureza ""Dual"" da Luz"
+54,FÍSICA MODERNA,Dualidade Onda-partícula: a Hipótese de Broglie
+55,FÍSICA MODERNA,Princípio da Incerteza de Heisenberg
+56,FÍSICA MODERNA,Relatividade Especial: Relatividade na Física Clássica
+57,FÍSICA MODERNA,Relatividade Galileana
+58,FÍSICA MODERNA,Experiência de Michelson-Morley
+59,FÍSICA MODERNA,Relatividade de Einstein: postulados da Teoria da Relatividade Especial
+60,FÍSICA MODERNA,Modificações na Relatividade Galileana
+61,FÍSICA MODERNA,Contração do comprimento
+62,FÍSICA MODERNA,Dilatação do tempo
+63,FÍSICA MODERNA,Composição relativística de velocidades
+64,FÍSICA MODERNA,Massa e Energia
+65,FÍSICA MODERNA,Energia e Quantidade de Movimento
