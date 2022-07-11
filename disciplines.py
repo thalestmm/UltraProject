@@ -20,7 +20,7 @@ def get_all_discipline_names() -> List[str]:
     return output
 
 
-def list_all_areas_from_discipline(discipline_name: str) -> List[str]:
+def get_all_areas_from_discipline(discipline_name: str) -> List[str]:
     """
     List all the registered areas from the selected discipline.
     :param discipline_name: discipline name, as registered in the Disciplines Dependencies folder.
@@ -32,7 +32,7 @@ def list_all_areas_from_discipline(discipline_name: str) -> List[str]:
     return list(discipline_df["area"].unique())
 
 
-def list_all_subjects_from_area(discipline_name: str, area_name: str) -> List[str]:
+def get_all_subjects_from_area(discipline_name: str, area_name: str) -> List[str]:
     """
     List all the registered Subjects from the discipline's areas.
     :param discipline_name: discipline name, as registered in the Disciplines Dependencies folder.
@@ -46,5 +46,5 @@ def list_all_subjects_from_area(discipline_name: str, area_name: str) -> List[st
 
 
 if __name__ == "__main__":
-    print(list_all_areas_from_discipline("MATEMÁTICA"))
-    print(list_all_subjects_from_area("MATEMÁTICA", "NÚMEROS COMPLEXOS"))
+    print(get_all_areas_from_discipline("MATEMÁTICA"))
+    print(get_all_subjects_from_area("MATEMÁTICA", "NÚMEROS COMPLEXOS"))
