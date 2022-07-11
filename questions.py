@@ -1,6 +1,6 @@
 import typing
 from dataclasses import dataclass
-from typing import Optional, TypedDict
+from typing import Optional
 import logging
 import random
 import string
@@ -141,7 +141,7 @@ class BaseQuestionModel:
     alternatives: AlternativeModel
     discipline: str
     area: str
-    content: str
+    subject: Optional[str] = None
     exam_description: Optional[OldExamModel] = None
     difficulty_level: int = 3
     question_id = QuestionID()
@@ -165,7 +165,18 @@ class BaseQuestionModel:
             logging.exception(f"'{self.discipline}' discipline not registered")
             raise ValueError("Entered discipline not registered in the Dependencies Folder")
 
-        discipline_areas = disciplines.list_all_areas_from_discipline(self.discipline)
+        self.area = self.area.upper()
+        discipline_areas = disciplines.get_all_areas_from_discipline(self.discipline)
+
+        if self.area not in discipline_areas:
+            logging.exception(f"'{self.area}' area not registered in {self.discipline}")
+            raise ValueError("Entered area not registered in the respective Discipline Folder")
+
+        area_subjects = disciplines.get_all_subjects_from_area(self.discipline, self.area)
+
+        if self.subject not in area_subjects and self.subject is not None:
+            logging.exception(f"'{self.subject}' subject not registered in {self.discipline}/{self.area}")
+            raise ValueError("Entered subject not registered in the respective Discipline Folder")
 
         logging.info(f"QUESTION of ID {self.question_id} generated")
 
