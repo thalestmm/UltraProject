@@ -1,4 +1,3 @@
-import typing
 from dataclasses import dataclass
 from typing import Optional
 import logging
@@ -6,6 +5,8 @@ import random
 import string
 import json
 import os
+
+# Local modules
 import disciplines
 
 
@@ -131,6 +132,9 @@ class OldExamModel:
             return None
 
 
+# TODO: ADD A QUESTIONS MASTER FILE CONTAINING:
+# TODO: QUESTION ID, DISCIPLINE, AREA, SUBJECT, DIFFICULTY LEVEL
+# TODO: THIS WILL BE USED TO HANDLE OVERALL STATISTICS AND ALSO EASILY MAP THE DESIRED TYPE OF QUESTION
 @dataclass
 class BaseQuestionModel:
     """
@@ -146,6 +150,7 @@ class BaseQuestionModel:
     difficulty_level: int = 3
     question_id = QuestionID()
     has_auxiliary_image: bool = False
+    has_solution_image: bool = False
 
     def __post_init__(self):
         """

@@ -6,8 +6,8 @@ import pandas as pd
 
 
 class PlannerMaker:
-    def __init__(self, date_begin, date_exam, available_weekdays: list, hours_per_day: list, revision_days: int = 7,
-                 difficulty_per_area = None):
+    def __init__(self, date_begin, date_exam, available_weekdays: list, daily_hours: list, revision_days: int = 7,
+                 difficulty_per_area=None):
 
         self.date_begin     = date_begin
         self.date_exam      = date_exam
@@ -18,8 +18,8 @@ class PlannerMaker:
 
         weekdays            = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
         self.days           = {day: (available, hours) for day, available, hours in zip(weekdays,
-                                                                              available_weekdays,
-                                                                              hours_per_day)}
+                                                                                        available_weekdays,
+                                                                                        daily_hours)}
 
         self.hours_per_week = sum([available * hours for available, hours in self.days.values()])
 

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block custom_css %}
+#main-frame {
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        padding: 20px;
+        width: 40em;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+.answer-radio {
+        padding:0px 20px 0px 20px;
+    }
+.answer-label {
+        font-size: 17px;
+        text-align: center;
+    }
+{% endblock %}
+{% block title %}Inserir Questão{% endblock %}
+{% block content %}
+<br>
+<div id="main-frame" class="container-fluid">
+<h3 style="text-align: center">Inserir uma nova questão</h3>
+<br>
+<form class="g-3">
+<div class="mb-3">
+  <label for="question-text" class="form-label">Enunciado - <a href="https://www.codecogs.com/eqnedit.php" target="_blank">CodeCogs</a></label>
+  <textarea class="form-control" id="question-text" required rows="4"></textarea>
+</div>
+<label style="padding:0px 0px 10px 0px;">Alternativas</label>
+{% for letter in ["a", "b", "c", "d"] %}
+<div class="input-group mb-3">
+  <span class="input-group-text" id="alternative-{{letter}}">{{ letter.upper() }}</span>
+  <input type="text" class="form-control" aria-label="Alternativa {{ letter.upper() }}" aria-describedby="alternative-{{letter}}">
+</div>
+{% endfor %}
+<label style="padding:0px 0px 10px 0px;">Resposta</label>
+<div class="container-fluid" align="center">
+{% for letter in ["a", "b", "c", "d"] %}
+<div class="form-check form-check-inline answer-radio">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="answer-{{letter}}" value="{{letter.upper()}}">
+  <label class="form-check-label answer-label" for="answer-{{letter}}">{{letter.upper()}}</label>
+</div>
+{% endfor %}
+</div>
+<br>
+<div class="mb-3">
+    <label for="difficulty-level" class="form-label">Dificuldade</label>
+    <input type="range" class="form-range" min="1" max="5" step="1" id="difficulty-level">
+</div>
+<div class="mb-3">
+  <label for="old-exam-name" class="form-label">Concurso / Prova</label>
+  <input type="text" class="form-control" id="old-exam-name" placeholder="Ex: AFA, ENEM, FUVEST">
+</div>
+<div class="mb-3">
+  <label for="old-exam-year" class="form-label">Ano</label>
+  <input type="text" class="form-control" id="old-exam-year" placeholder="Ex: 2020">
+</div>
+<select id="selected-discipline" class="form-select" aria-label="Disciplina">
+  <option selected>Disciplina</option>
+    {% for discipline in disciplines %}
+  <option value={{discipline.index}}>{{discipline}}</option>
+    {% endfor %}
+</select>
+<br>
+<select id="selected-area" class="form-select" aria-label="Área">
+  <option selected>Área</option>
+    {% for discipline in disciplines %}
+  <option value="1">{{discipline}}</option>
+    {% endfor %}
+</select>
+<br>
+<div class="mb-3">
+  <label for="aux-img-file" class="form-label">Inserir imagem</label>
+  <input class="form-control" type="file" id="aux-img-file">
+</div>
+<div class="mb-3">
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</div>
+</form>
+</div>
+<br>
+{% endblock %}
