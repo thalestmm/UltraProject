@@ -11,7 +11,6 @@ import os
 import disciplines
 
 
-# TODO: CHANGE REGISTRY FILE TO CSV FORMAT AND USE PANDAS TO HANDLE EXISTING IDs
 class QuestionID:
     """
     1) Generate a new ID for a question upon entry.
@@ -20,7 +19,7 @@ class QuestionID:
     """
 
     def __init__(self):
-        self.master_filepath = "Registry/ids_master.txt"
+        self.master_filepath = "Registry/question_statistics.csv"
 
         _loop_counter = 0
         while True:
@@ -32,7 +31,6 @@ class QuestionID:
                 continue
             else:
                 break
-        self.add_new_id_to_master_file(self.generated_id)
 
     def __str__(self):
         return self.generated_id
@@ -59,29 +57,15 @@ class QuestionID:
         :param new_id: generated ID to verify
         :return: Boolean value (True if the ID already exists)
         """
-        with open(self.master_filepath, 'r') as ids:
-            lines = ids.readlines()
-            if new_id in lines or f'{new_id}\n' in lines:
-                ids.close()
-                return True
-            else:
-                ids.close()
-                return False
+        questions_df = pd.read_csv(self.master_filepath, sep=";")
 
-    def add_new_id_to_master_file(self, new_id: str) -> None:
-        """
-        After the ID has been checked, add it to the master txt file.
-        :return: None
-        """
-        with open(self.master_filepath, "a") as ids:
-            ids.write(f'{new_id}\n')
-            ids.close()
-
-        logging.info(f"{new_id} added to the master file")
-        return None
+        if new_id in questions_df["question_id"].to_list():
+            return True
+        else:
+            return False
 
 
-# TODO: EVALUATE CHANGING THE PARAGRAPH TAGS TO SOME INLINE VALUES (MAYBE SPAN)
+# TODO: EVALUATE CHANGING THE PARAGRAPH TAGS TO SOME INLINE VALUES (MAYBE <span>)
 @dataclass
 class HTMLString:
     """
@@ -204,6 +188,7 @@ class BaseQuestionModel:
         }
 
 
+# TODO: CHANGE THE APPEND() METHOD TO SOME OTHER, MAYBE CONCAT(), BECAUSE APPEND WILL BE REMOVED
 def insert_new_question_into_master_file(generated_question: BaseQuestionModel, parent_dir: str = "Registry") -> None:
     data = pd.Series(generated_question.get_statistic_params())
 
@@ -239,7 +224,7 @@ def create_questions_folder() -> None:
 
 if __name__ == "__main__":
     new_question = BaseQuestionModel(
-        question_text="ABCDS",
+        question_text=HTMLString(content="ABCDSDSF"),
         alternatives=AlternativeModel(
             A=HTMLString(content="1"),
             B=HTMLString(content="2"),
@@ -250,4 +235,4 @@ if __name__ == "__main__":
         discipline="MATEMÁTICA",
         area="FUNÇÕES"
     )
-    insert_new_question_into_master_file(new_question)
+    # insert_new_question_into_master_file(new_question)
