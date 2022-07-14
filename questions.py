@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional, Dict
+from typing import Optional
 import pandas as pd
 import logging
 import random
@@ -11,6 +11,7 @@ import os
 import disciplines
 
 
+# TODO: CHANGE REGISTRY FILE TO CSV FORMAT AND USE PANDAS TO HANDLE EXISTING IDs
 class QuestionID:
     """
     1) Generate a new ID for a question upon entry.
@@ -80,6 +81,7 @@ class QuestionID:
         return None
 
 
+# TODO: EVALUATE CHANGING THE PARAGRAPH TAGS TO SOME INLINE VALUES (MAYBE SPAN)
 @dataclass
 class HTMLString:
     """
@@ -138,9 +140,6 @@ class OldExamModel:
             return None
 
 
-# TODO: ADD A QUESTIONS MASTER FILE CONTAINING:
-# TODO: QUESTION ID, DISCIPLINE, AREA, SUBJECT, DIFFICULTY LEVEL
-# TODO: THIS WILL BE USED TO HANDLE OVERALL STATISTICS AND ALSO EASILY MAP THE DESIRED TYPE OF QUESTION
 @dataclass
 class BaseQuestionModel:
     """
@@ -232,46 +231,7 @@ def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Q
 
 def create_questions_folder() -> None:
     os.makedirs("Questions", exist_ok=True)
-    return None
 
 
 if __name__ == "__main__":
-    def add_new_question_via_console() -> None:
-        question_text = input("Texto da questão: ")
-        alt_a = input("Alternativa A: ")
-        alt_b = input("Alternativa B: ")
-        alt_c = input("Alternativa C: ")
-        alt_d = input("Alternativa D: ")
-        answer = input("Alternativa resposta (A, B, C ou D): ")
-        nome_concurso = input("Nome do Concurso: ")
-        ano_concurso = input("Ano do Concurso: ")
-        difficulty = input("Dificuldade da Questão (1 a 5): ")
-        has_aux_img = input("Possui imagem auxiliar? (S ou N): ").upper()
-
-        if has_aux_img == "S":
-            has_aux_img = True
-        else:
-            has_aux_img = False
-
-        alternatives = AlternativeModel(
-            A=alt_a,
-            B=alt_b,
-            C=alt_c,
-            D=alt_d,
-            answer=answer
-        )
-        exam_data = OldExamModel(
-            exam_name=nome_concurso,
-            exam_year=ano_concurso
-        )
-
-        new_question = BaseQuestionModel(
-            question_text=question_text,
-            alternatives=alternatives.__dict__,
-            exam_description=exam_data.__dict__,
-            difficulty_level=difficulty,
-            has_auxiliary_image=has_aux_img
-        )
-
-        export_into_json(new_question)
-    add_new_question_via_console()
+    pass
