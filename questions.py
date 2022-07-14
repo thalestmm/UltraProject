@@ -119,6 +119,10 @@ class AlternativeModel:
             logging.exception("Answer provided is not available")
             raise ValueError("Answer must be either A, B, C or D")
 
+        if self.A == self.B or self.A == self.C or self.A == self.D or \
+           self.B == self.C or self.B == self.D or self.C == self.D:
+            raise ValueError("There cannot be any 2 alternatives with the same value")
+
 
 @dataclass
 class OldExamModel:
@@ -201,7 +205,7 @@ class BaseQuestionModel:
 
 
 def insert_new_question_into_master_file(generated_question: BaseQuestionModel, parent_dir: str = "Registry") -> None:
-    data = generated_question.get_statistic_params()
+    data = pd.Series(generated_question.get_statistic_params())
 
     filepath = parent_dir + "/question_statistics.csv"
 
@@ -209,7 +213,7 @@ def insert_new_question_into_master_file(generated_question: BaseQuestionModel, 
 
     questions_df = questions_df.append(data, ignore_index=True)
 
-    questions_df.to_csv(filepath, sep=";")
+    questions_df.to_csv(filepath, sep=";", index=False)
 
 
 def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Questions") -> None:
@@ -234,4 +238,16 @@ def create_questions_folder() -> None:
 
 
 if __name__ == "__main__":
-    pass
+    new_question = BaseQuestionModel(
+        question_text="ABCDS",
+        alternatives=AlternativeModel(
+            A=HTMLString(content="1"),
+            B=HTMLString(content="2"),
+            C=HTMLString(content="3"),
+            D=HTMLString(content="4"),
+            answer="A"
+        ),
+        discipline="MATEMÁTICA",
+        area="FUNÇÕES"
+    )
+    insert_new_question_into_master_file(new_question)
