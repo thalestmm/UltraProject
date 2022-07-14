@@ -5,7 +5,6 @@
         border-radius: 10px;
         padding: 20px;
         width: 40em;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 .answer-radio {
         padding:0px 20px 0px 20px;
@@ -18,7 +17,7 @@
 {% block title %}Inserir Questão{% endblock %}
 {% block content %}
 <br>
-<div id="main-frame" class="container-fluid">
+<div id="main-frame" class="container-fluid shadow p-3 mb-5 bg-body rounded">
 <h3 style="text-align: center">Inserir uma nova questão</h3>
 <br>
 <form class="g-3">
@@ -55,6 +54,7 @@
   <label for="old-exam-year" class="form-label">Ano</label>
   <input type="text" class="form-control" id="old-exam-year" placeholder="Ex: 2020">
 </div>
+<label style="padding:0px 0px 10px 0px;">Detalhes do Conteúdo</label>
 <select id="selected-discipline" class="form-select" aria-label="Disciplina">
   <option selected>Disciplina</option>
     {% for discipline in disciplines %}
@@ -69,14 +69,27 @@
     {% endfor %}
 </select>
 <br>
+<select id="selected-area" class="form-select" aria-label="Área">
+  <option selected>Conteúdo</option>
+    {% for discipline in disciplines %}
+  <option value="1">{{discipline}}</option>
+    {% endfor %}
+</select>
+<br>
 <div class="mb-3">
-  <label for="aux-img-file" class="form-label">Inserir imagem</label>
+  <label for="aux-img-file" class="form-label">Imagem Auxiliar</label>
   <input class="form-control" type="file" id="aux-img-file">
 </div>
 <div class="mb-3">
+  <label for="aux-img-file" class="form-label">Resolução</label>
+  <input class="form-control" type="file" id="aux-img-file">
+</div>
+<br>
+<div class="d-grid gap-2 col-6 mx-auto">
   <button type="submit" class="btn btn-primary">Enviar</button>
 </div>
 </form>
+<br>
 </div>
 <br>
 {% endblock %}

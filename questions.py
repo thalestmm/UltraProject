@@ -1,12 +1,13 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Dict
+import pandas as pd
 import logging
 import random
 import string
 import json
 import os
 
-# Local modules
+# LOCAL MODULES
 import disciplines
 
 
@@ -18,7 +19,7 @@ class QuestionID:
     """
 
     def __init__(self):
-        self.master_filename = "ids_master.txt"
+        self.master_filepath = "Registry/ids_master.txt"
 
         _loop_counter = 0
         while True:
@@ -57,7 +58,7 @@ class QuestionID:
         :param new_id: generated ID to verify
         :return: Boolean value (True if the ID already exists)
         """
-        with open(self.master_filename, 'r') as ids:
+        with open(self.master_filepath, 'r') as ids:
             lines = ids.readlines()
             if new_id in lines or f'{new_id}\n' in lines:
                 ids.close()
@@ -71,7 +72,7 @@ class QuestionID:
         After the ID has been checked, add it to the master txt file.
         :return: None
         """
-        with open(self.master_filename, "a") as ids:
+        with open(self.master_filepath, "a") as ids:
             ids.write(f'{new_id}\n')
             ids.close()
 
@@ -125,6 +126,11 @@ class OldExamModel:
     """
     exam_name: str
     exam_year: int
+
+    def __post_init__(self):
+        if type(self.exam_year) is not int:
+            logging.exception(f"'{self.exam_year}' value entered is not an integer ")
+            raise ValueError("Exam Year must be an integer")
 
     def __repr__(self):
         if self.exam_name is None and self.exam_year is None:
@@ -185,6 +191,27 @@ class BaseQuestionModel:
 
         logging.info(f"QUESTION of ID {self.question_id} generated")
 
+    def get_statistic_params(self):
+        return {
+            "question_id": self.question_id,
+            "discipline": self.discipline,
+            "area": self.area,
+            "subject": self.subject,
+            "difficulty_level": self.difficulty_level
+        }
+
+
+def insert_new_question_into_master_file(generated_question: BaseQuestionModel, parent_dir: str = "Registry") -> None:
+    data = generated_question.get_statistic_params()
+
+    filepath = parent_dir + "/question_statistics.csv"
+
+    questions_df = pd.read_csv(filepath, sep=";")
+
+    questions_df = questions_df.append(data, ignore_index=True)
+
+    questions_df.to_csv(filepath, sep=";")
+
 
 def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Questions") -> None:
     """
@@ -208,45 +235,43 @@ def create_questions_folder() -> None:
     return None
 
 
-def add_new_question_via_console() -> None:
-    question_text = input("Texto da questão: ")
-    alt_a = input("Alternativa A: ")
-    alt_b = input("Alternativa B: ")
-    alt_c = input("Alternativa C: ")
-    alt_d = input("Alternativa D: ")
-    answer = input("Alternativa resposta (A, B, C ou D): ")
-    nome_concurso = input("Nome do Concurso: ")
-    ano_concurso = input("Ano do Concurso: ")
-    difficulty = input("Dificuldade da Questão (1 a 5): ")
-    has_aux_img = input("Possui imagem auxiliar? (S ou N): ").upper()
-
-    if has_aux_img == "S":
-        has_aux_img = True
-    else:
-        has_aux_img = False
-
-    alternatives = AlternativeModel(
-        A=alt_a,
-        B=alt_b,
-        C=alt_c,
-        D=alt_d,
-        answer=answer
-    )
-    exam_data = OldExamModel(
-        exam_name=nome_concurso,
-        exam_year=ano_concurso
-    )
-
-    new_question = BaseQuestionModel(
-        question_text=question_text,
-        alternatives=alternatives.__dict__,
-        exam_description=exam_data.__dict__,
-        difficulty_level=difficulty,
-        has_auxiliary_image=has_aux_img
-    )
-
-    export_into_json(new_question)
-
-
 if __name__ == "__main__":
+    def add_new_question_via_console() -> None:
+        question_text = input("Texto da questão: ")
+        alt_a = input("Alternativa A: ")
+        alt_b = input("Alternativa B: ")
+        alt_c = input("Alternativa C: ")
+        alt_d = input("Alternativa D: ")
+        answer = input("Alternativa resposta (A, B, C ou D): ")
+        nome_concurso = input("Nome do Concurso: ")
+        ano_concurso = input("Ano do Concurso: ")
+        difficulty = input("Dificuldade da Questão (1 a 5): ")
+        has_aux_img = input("Possui imagem auxiliar? (S ou N): ").upper()
+
+        if has_aux_img == "S":
+            has_aux_img = True
+        else:
+            has_aux_img = False
+
+        alternatives = AlternativeModel(
+            A=alt_a,
+            B=alt_b,
+            C=alt_c,
+            D=alt_d,
+            answer=answer
+        )
+        exam_data = OldExamModel(
+            exam_name=nome_concurso,
+            exam_year=ano_concurso
+        )
+
+        new_question = BaseQuestionModel(
+            question_text=question_text,
+            alternatives=alternatives.__dict__,
+            exam_description=exam_data.__dict__,
+            difficulty_level=difficulty,
+            has_auxiliary_image=has_aux_img
+        )
+
+        export_into_json(new_question)
     add_new_question_via_console()
