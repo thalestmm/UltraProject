@@ -51,7 +51,7 @@ class PlannerMaker:
 
 class Topics:
     def __init__(self, filepath = None):
-        self.filepath = r'Dependencies/BANCO AFA - TOPICS.csv'
+        self.filepath = r'../Dependencies/BANCO AFA - TOPICS.csv'
 
         topics_df = pd.read_csv(self.filepath, index_col="id")
 

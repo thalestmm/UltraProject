@@ -1,6 +1,5 @@
 from flask import Flask,render_template
-from markupsafe import escape
-import disciplines as disc
+from Source import disciplines as disc
 
 app = Flask(__name__)
 

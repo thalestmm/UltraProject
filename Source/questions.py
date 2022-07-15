@@ -19,7 +19,7 @@ class QuestionID:
     """
 
     def __init__(self):
-        self.master_filepath = "Registry/question_statistics.csv"
+        self.master_filepath = "../Registry/question_statistics.csv"
 
         _loop_counter = 0
         while True:
@@ -219,7 +219,7 @@ def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Q
 
 
 def create_questions_folder() -> None:
-    os.makedirs("Questions", exist_ok=True)
+    os.makedirs("../Questions", exist_ok=True)
 
 
 if __name__ == "__main__":
