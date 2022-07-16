@@ -108,6 +108,12 @@ class AlternativeModel:
     answer: str
 
     def __post_init__(self):
+        if self.A is None or self.B is None or self.C is None or self.D is None:
+            raise TypeError("Answer can't be of none type")
+
+        if self.A == "" or self.B == "" or self.C == "" or self.D == "":
+            raise ValueError("Answer can't be an empty string")
+
         self.A = str(self.A.__str__())
         self.B = str(self.B.__str__())
         self.C = str(self.C.__str__())
