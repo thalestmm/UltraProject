@@ -1,4 +1,3 @@
-import typing
 from dataclasses import dataclass
 from typing import Optional
 import pandas as pd
@@ -19,16 +18,19 @@ class QuestionID:
     3) Write the new ID on the master file for later conference.
     """
 
-    def __init__(self):
-        self.master_filepath = r"Registry/question_statistics.csv"
+    def __init__(self, desired_id: str = None, parent_dir: str = "Registry"):
+        self.master_filepath = parent_dir + r"/question_statistics.csv"
 
         _loop_counter = 0
         while True:
             _loop_counter += 1
             if _loop_counter >= 100:
                 raise TimeoutError("Too many checks for the generated ID")
-            self.generated_id = self.generate_random_id()
-            if self.check_if_id_exists(self.generated_id):
+            if desired_id is None:
+                self.generated_id = self.generate_random_id()
+            else:
+                self.generated_id = desired_id
+            if self.check_if_id_exists(self.master_filepath, self.generated_id):
                 continue
             else:
                 break
@@ -51,14 +53,19 @@ class QuestionID:
 
         return new_id
 
-    def check_if_id_exists(self, new_id: str) -> bool:
+    @staticmethod
+    def check_if_id_exists(master_filepath: str, new_id: str) -> bool:
         """
         Open the master txt file (that contains all the generated IDs) and
         verify if the newly generated ID already exists.
+        :param master_filepath: statistics filepath
         :param new_id: generated ID to verify
         :return: Boolean value (True if the ID already exists)
         """
-        questions_df = pd.read_csv(self.master_filepath, sep=";")
+        try:
+            questions_df = pd.read_csv(master_filepath, sep=";")
+        except FileNotFoundError:
+            return False
 
         if new_id in questions_df["question_id"].to_list():
             return True
@@ -66,7 +73,6 @@ class QuestionID:
             return False
 
 
-# TODO: EVALUATE CHANGING THE PARAGRAPH TAGS TO SOME INLINE VALUES (MAYBE <span>)
 @dataclass
 class HTMLString:
     """
@@ -75,7 +81,7 @@ class HTMLString:
     content: str
 
     def __post_init__(self):
-        self.content = self.add_paragraph_tags(self.content)
+        self.content = self.add_span_tags(self.content)
 
     def __repr__(self):
         return str(self.content)
@@ -84,8 +90,8 @@ class HTMLString:
         return str(self.content)
 
     @staticmethod
-    def add_paragraph_tags(text: str) -> str:
-        return f"<p>{text}</p>"
+    def add_span_tags(text: str) -> str:
+        return f"<span>{text}</span>"
 
 
 @dataclass
@@ -108,6 +114,10 @@ class AlternativeModel:
         self.D = str(self.D.__str__())
 
         available_answers = ["A", "B", "C", "D"]
+
+        if type(self.answer) is not str:
+            logging.exception(f"Answer parameter provided as {type(self.answer)} type")
+            raise TypeError("Answer must be of type string")
 
         self.answer = self.answer.upper()
 
@@ -141,7 +151,7 @@ class OldExamModel:
     def __post_init__(self):
         if type(self.exam_year) is not int:
             logging.exception(f"'{self.exam_year}' value entered is not an integer ")
-            raise ValueError("Exam Year must be an integer")
+            raise TypeError("Exam Year must be an integer")
 
     def __repr__(self):
         if self.exam_name is None and self.exam_year is None:
@@ -255,6 +265,7 @@ def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Q
 
     with open(f"{parent_dir}/{question_id}.json", "w") as file:
         file.write(json_file)
+        file.close()
 
     logging.info(f"{question_id}.json file created")
 
@@ -267,7 +278,7 @@ def create_questions_folder() -> None:
 
 if __name__ == "__main__":
     new_question = BaseQuestionModel(
-        question_text=HTMLString(content="ABCDSDSF"),
+        question_text=HTMLString(content="Test Question"),
         alternatives=AlternativeModel(
             A=HTMLString(content="1"),
             B=HTMLString(content="2"),
@@ -279,5 +290,4 @@ if __name__ == "__main__":
         area="FUNÇÕES"
     )
     insert_new_question_into_master_file(new_question)
-    export_into_json(new_question)
-    print(type(HTMLString("lalala").__str__()))
+    # export_into_json(new_question)
