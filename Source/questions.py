@@ -1,3 +1,4 @@
+import typing
 from dataclasses import dataclass
 from typing import Optional
 import pandas as pd
@@ -8,7 +9,7 @@ import json
 import os
 
 # LOCAL MODULES
-import disciplines
+from Source import disciplines
 
 
 class QuestionID:
@@ -19,7 +20,7 @@ class QuestionID:
     """
 
     def __init__(self):
-        self.master_filepath = "../Registry/question_statistics.csv"
+        self.master_filepath = r"Registry/question_statistics.csv"
 
         _loop_counter = 0
         while True:
@@ -73,8 +74,14 @@ class HTMLString:
     """
     content: str
 
+    def __post_init__(self):
+        self.content = self.add_paragraph_tags(self.content)
+
     def __repr__(self):
-        return self.add_paragraph_tags(self.content)
+        return str(self.content)
+
+    def __str__(self):
+        return str(self.content)
 
     @staticmethod
     def add_paragraph_tags(text: str) -> str:
@@ -88,24 +95,38 @@ class AlternativeModel:
     Each and every question must consist of 4 different alternatives.
     The right answer will be based on the adequate key (A-D).
     """
-    A: HTMLString
-    B: HTMLString
-    C: HTMLString
-    D: HTMLString
+    A: HTMLString.__str__
+    B: HTMLString.__str__
+    C: HTMLString.__str__
+    D: HTMLString.__str__
     answer: str
 
     def __post_init__(self):
+        self.A = str(self.A.__str__())
+        self.B = str(self.B.__str__())
+        self.C = str(self.C.__str__())
+        self.D = str(self.D.__str__())
+
         available_answers = ["A", "B", "C", "D"]
 
         self.answer = self.answer.upper()
 
         if self.answer not in available_answers:
-            logging.exception("Answer provided is not available")
+            logging.exception(f"Alternative '{self.answer}' provided is not available")
             raise ValueError("Answer must be either A, B, C or D")
 
         if self.A == self.B or self.A == self.C or self.A == self.D or \
            self.B == self.C or self.B == self.D or self.C == self.D:
             raise ValueError("There cannot be any 2 alternatives with the same value")
+
+    def __repr__(self):
+        return {
+            "A": str(self.A),
+            "B": str(self.B),
+            "C": str(self.C),
+            "D": str(self.D),
+            "answer": str(self.answer)
+        }
 
 
 @dataclass
@@ -126,6 +147,11 @@ class OldExamModel:
         if self.exam_name is None and self.exam_year is None:
             # This means there wasn't an Old Exam entry
             return None
+        else:
+            return {
+                "exam_name": str(self.exam_name),
+                "exam_year": int(self.exam_year)
+            }
 
 
 @dataclass
@@ -134,7 +160,7 @@ class BaseQuestionModel:
     Class for formatting new questions and later turning each entry into its own JSON file.
     """
 
-    question_text: HTMLString
+    question_text: HTMLString.__str__
     alternatives: AlternativeModel
     discipline: str
     area: str
@@ -187,6 +213,20 @@ class BaseQuestionModel:
             "difficulty_level": self.difficulty_level
         }
 
+    def dict_representation(self) -> dict:
+        return {
+            "question_id": str(self.question_id),
+            "discipline": str(self.discipline),
+            "area": str(self.area),
+            "subject": str(self.subject),
+            "difficulty_level": int(self.difficulty_level),
+            "question_text": str(self.question_text),
+            "alternatives": self.alternatives.__repr__(),
+            "exam_description": self.exam_description.__repr__(),
+            "has_auxiliary_image": bool(self.has_auxiliary_image),
+            "has_solution_image": bool(self.has_solution_image)
+        }
+
 
 # TODO: CHANGE THE APPEND() METHOD TO SOME OTHER, MAYBE CONCAT(), BECAUSE APPEND WILL BE REMOVED
 def insert_new_question_into_master_file(generated_question: BaseQuestionModel, parent_dir: str = "Registry") -> None:
@@ -206,11 +246,14 @@ def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Q
     Create a JSON file with the new question ID as the filename.
     :return: None
     """
-    root_folder = parent_dir
-    question_id = generated_question.question_id
-    json_file = json.dumps(generated_question.__dict__)
+    if type(generated_question) is not BaseQuestionModel:
+        raise ValueError("Must pass question as BaseQuestionModel")
 
-    with open(f"{root_folder}/{question_id}.json", "w") as file:
+    question_id = generated_question.question_id
+    question_data = generated_question.dict_representation()
+    json_file = json.dumps(question_data)
+
+    with open(f"{parent_dir}/{question_id}.json", "w") as file:
         file.write(json_file)
 
     logging.info(f"{question_id}.json file created")
@@ -235,4 +278,6 @@ if __name__ == "__main__":
         discipline="MATEMÁTICA",
         area="FUNÇÕES"
     )
-    # insert_new_question_into_master_file(new_question)
+    insert_new_question_into_master_file(new_question)
+    export_into_json(new_question)
+    print(type(HTMLString("lalala").__str__()))

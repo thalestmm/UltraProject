@@ -9,7 +9,7 @@ def get_all_discipline_names() -> List[str]:
     This will be used to select the adequate discipline on both the questions API and the Exam Reports.
     :return: List of strings containing all the registered disciplines.
     """
-    folder_path = r"../Dependencies/Disciplines"
+    folder_path = r"./Dependencies/Disciplines"
     full_filename = os.listdir(folder_path)
     output = []
 

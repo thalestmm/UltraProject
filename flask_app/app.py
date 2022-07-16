@@ -18,3 +18,7 @@ def render_question(question_id):
 def register_new_question():
     disciplines = disc.get_all_discipline_names()
     return render_template("register_question.html", disciplines=disciplines)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
