@@ -194,6 +194,10 @@ class BaseQuestionModel:
         """
         self.question_id = str(self.question_id)
 
+        if type(self.difficulty_level) is not int:
+            logging.exception(f"Difficulty level passed as {type(self.difficulty_level)}")
+            raise TypeError(f"Difficulty level must be an integer, not {type(self.difficulty_level)}")
+
         if int(self.difficulty_level) not in range(1, 6):
             logging.exception(f"Difficulty level entered ({self.difficulty_level}) outside of the desired range.")
             raise ValueError("Difficulty level must be an integer between 1 and 5.")
@@ -203,20 +207,20 @@ class BaseQuestionModel:
 
         if self.discipline not in available_disciplines:
             logging.exception(f"'{self.discipline}' discipline not registered")
-            raise ValueError("Entered discipline not registered in the Dependencies Folder")
+            raise KeyError("Entered discipline not registered in the Dependencies Folder")
 
         self.area = self.area.upper()
         discipline_areas = disciplines.get_all_areas_from_discipline(self.discipline)
 
         if self.area not in discipline_areas:
             logging.exception(f"'{self.area}' area not registered in {self.discipline}")
-            raise ValueError("Entered area not registered in the respective Discipline Folder")
+            raise KeyError("Entered area not registered in the respective Discipline Folder")
 
         area_subjects = disciplines.get_all_subjects_from_area(self.discipline, self.area)
 
         if self.subject not in area_subjects and self.subject is not None:
             logging.exception(f"'{self.subject}' subject not registered in {self.discipline}/{self.area}")
-            raise ValueError("Entered subject not registered in the respective Discipline Folder")
+            raise KeyError("Entered subject not registered in the respective Discipline Folder")
 
         logging.info(f"QUESTION of ID {self.question_id} generated")
 
