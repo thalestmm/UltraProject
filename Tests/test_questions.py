@@ -48,5 +48,100 @@ class TestAlternativeModel(unittest.TestCase):
         self.assertEqual(questions.AlternativeModel(A=2, B=1, C=3, D=4, answer="d").A, "2")
 
 
+# TODO: ADD ALL TESTS
+class TestBaseQuestionModel(unittest.TestCase):
+    def test_question_creation(self):
+        pass
+
+    def test_validations(self):
+        with self.assertRaises(ValueError):
+            questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=6,
+                discipline="MATEMÁTICA",
+                area="FUNÇÕES"
+            )
+        with self.assertRaises(TypeError):
+            questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=4.5,
+                discipline="MATEMÁTICA",
+                area="FUNÇÕES"
+            )
+        with self.assertRaises(TypeError):
+            questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=None,
+                discipline="MATEMÁTICA",
+                area="FUNÇÕES"
+            )
+        with self.assertRaises(KeyError):
+            questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=3,
+                discipline="DISCIPLINA TESTE",
+                area="FUNÇÕES"
+            )
+        with self.assertRaises(KeyError):
+            questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=3,
+                discipline="MATEMÁTICA",
+                area="ÁREA TESTE"
+            )
+        with self.assertRaises(KeyError):
+            questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=3,
+                discipline="MATEMÁTICA",
+                area="FUNÇÕES",
+                subject="Conteúdo teste"
+            )
+
+        self.assertEqual()
+
+
 if __name__ == '__main__':
     unittest.main()
