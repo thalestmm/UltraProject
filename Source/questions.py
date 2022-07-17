@@ -249,7 +249,11 @@ class BaseQuestionModel:
 
 
 # TODO: CHANGE THE APPEND() METHOD TO SOME OTHER, MAYBE CONCAT(), BECAUSE APPEND WILL BE REMOVED
-def insert_new_question_into_master_file(generated_question: BaseQuestionModel, parent_dir: str = "Registry") -> None:
+def insert_new_question_into_master_file(generated_question: BaseQuestionModel, parent_dir: str = "../Registry", testing: bool = False) -> None:
+    if type(generated_question) is not BaseQuestionModel:
+        logging.error(f"generated_question provided as {type(generated_question)} type.")
+        raise TypeError("generated_question must be BaseQuestionModel")
+
     data = pd.Series(generated_question.get_statistic_params())
 
     filepath = parent_dir + "/question_statistics.csv"
@@ -258,24 +262,26 @@ def insert_new_question_into_master_file(generated_question: BaseQuestionModel, 
 
     questions_df = questions_df.append(data, ignore_index=True)
 
-    questions_df.to_csv(filepath, sep=";", index=False)
+    if not testing:
+        questions_df.to_csv(filepath, sep=";", index=False)
 
 
-def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "Questions") -> None:
+def export_into_json(generated_question: BaseQuestionModel, parent_dir: str = "../Questions", testing: bool = False) -> None:
     """
     Create a JSON file with the new question ID as the filename.
     :return: None
     """
     if type(generated_question) is not BaseQuestionModel:
-        raise ValueError("Must pass question as BaseQuestionModel")
+        raise TypeError("Must pass question as BaseQuestionModel")
 
     question_id = generated_question.question_id
     question_data = generated_question.dict_representation()
     json_file = json.dumps(question_data)
 
-    with open(f"{parent_dir}/{question_id}.json", "w") as file:
-        file.write(json_file)
-        file.close()
+    if not testing:
+        with open(f"{parent_dir}/{question_id}.json", "w") as file:
+            file.write(json_file)
+            file.close()
 
     logging.info(f"{question_id}.json file created")
 

@@ -141,5 +141,51 @@ class TestBaseQuestionModel(unittest.TestCase):
             )
 
 
+class TestRemainingMethods(unittest.TestCase):
+    def test_json_exporting(self):
+        new_question = questions.BaseQuestionModel(
+                question_text=questions.HTMLString(content="Test Question"),
+                alternatives=questions.AlternativeModel(
+                    A=questions.HTMLString(content="1"),
+                    B=questions.HTMLString(content="2"),
+                    C=questions.HTMLString(content="3"),
+                    D=questions.HTMLString(content="4"),
+                    answer="A"
+                ),
+                difficulty_level=3,
+                discipline="MATEMÁTICA",
+                area="FUNÇÕES",
+            )
+        self.assertIsNone(questions.export_into_json(new_question, testing=True))
+
+        with self.assertRaises(TypeError):
+            questions.export_into_json(None, testing=True)
+        with self.assertRaises(TypeError):
+            questions.export_into_json(-1, testing=True)
+        with self.assertRaises(TypeError):
+            questions.export_into_json(questions.HTMLString(content=1), testing=True)
+
+    def test_add_to_master_file(self):
+        new_question = questions.BaseQuestionModel(
+            question_text=questions.HTMLString(content="Test Question"),
+            alternatives=questions.AlternativeModel(
+                A=questions.HTMLString(content="1"),
+                B=questions.HTMLString(content="2"),
+                C=questions.HTMLString(content="3"),
+                D=questions.HTMLString(content="4"),
+                answer="A"
+            ),
+            difficulty_level=3,
+            discipline="MATEMÁTICA",
+            area="FUNÇÕES",
+        )
+        self.assertIsNone(questions.insert_new_question_into_master_file(new_question, testing=True))
+
+        with self.assertRaises(TypeError):
+            questions.insert_new_question_into_master_file(None, testing=True)
+        with self.assertRaises(TypeError):
+            questions.insert_new_question_into_master_file(-1, testing=True)
+
+
 if __name__ == '__main__':
     unittest.main()
