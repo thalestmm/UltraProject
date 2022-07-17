@@ -13,9 +13,9 @@ class TestOldExam(unittest.TestCase):
 class TestQuestionID(unittest.TestCase):
     def test_check_existence(self):
         with self.assertRaises(TimeoutError):
-            questions.QuestionID(desired_id="testing", parent_dir="CursoFull/Registry")
+            questions.QuestionID(desired_id="testing", parent_dir="../Registry")
 
-        self.assertEqual(questions.QuestionID(parent_dir="CursoFull/Registry").check_if_id_exists(master_filepath="CursoFull/Registry/question_statistics.csv", new_id="testing"), True)
+        self.assertEqual(questions.QuestionID(parent_dir="CursoFull/Registry").check_if_id_exists(master_filepath="../Registry/question_statistics.csv", new_id="testing"), True)
 
 
 class TestHTMLString(unittest.TestCase):
@@ -139,8 +139,6 @@ class TestBaseQuestionModel(unittest.TestCase):
                 area="FUNÇÕES",
                 subject="Conteúdo teste"
             )
-
-        self.assertEqual()
 
 
 if __name__ == '__main__':

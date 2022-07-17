@@ -21,15 +21,15 @@ class QuestionID:
     def __init__(self, desired_id: str = None, parent_dir: str = "Registry"):
         self.master_filepath = parent_dir + r"/question_statistics.csv"
 
+        self.generated_id = desired_id
+
         _loop_counter = 0
         while True:
             _loop_counter += 1
-            if _loop_counter >= 100:
+            if _loop_counter == 100:
                 raise TimeoutError("Too many checks for the generated ID")
             if desired_id is None:
                 self.generated_id = self.generate_random_id()
-            else:
-                self.generated_id = desired_id
             if self.check_if_id_exists(self.master_filepath, self.generated_id):
                 continue
             else:
@@ -299,5 +299,5 @@ if __name__ == "__main__":
         discipline="MATEMÁTICA",
         area="FUNÇÕES"
     )
-    insert_new_question_into_master_file(new_question)
+    insert_new_question_into_master_file(new_question, parent_dir="../Registry")
     # export_into_json(new_question)
