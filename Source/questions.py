@@ -80,9 +80,6 @@ class HTMLString:
     """
     content: str
 
-    def __post_init__(self):
-        self.content = self.add_span_tags(self.content)
-
     def __repr__(self):
         return str(self.content)
 
@@ -303,7 +300,7 @@ if __name__ == "__main__":
             answer="A"
         ),
         discipline="MATEMÁTICA",
-        area="FUNÇÕES"
+        area="FUNÇÕES",
     )
     insert_new_question_into_master_file(new_question, parent_dir="../Registry")
     # export_into_json(new_question)
