@@ -74,34 +74,16 @@ class QuestionID:
 
 
 @dataclass
-class HTMLString:
-    """
-    Baseclass for HMTL Strings (both on the question text and alternatives).
-    """
-    content: str
-
-    def __repr__(self):
-        return str(self.content)
-
-    def __str__(self):
-        return str(self.content)
-
-    @staticmethod
-    def add_span_tags(text: str) -> str:
-        return f"<span>{text}</span>"
-
-
-@dataclass
 class AlternativeModel:
     """
     Baseclass for each alternative dict.
     Each and every question must consist of 4 different alternatives.
     The right answer will be based on the adequate key (A-D).
     """
-    A: HTMLString.__str__
-    B: HTMLString.__str__
-    C: HTMLString.__str__
-    D: HTMLString.__str__
+    A: str
+    B: str
+    C: str
+    D: str
     answer: str
 
     def __post_init__(self):
@@ -110,11 +92,6 @@ class AlternativeModel:
 
         if self.A == "" or self.B == "" or self.C == "" or self.D == "":
             raise ValueError("Answer can't be an empty string")
-
-        self.A = str(self.A.__str__())
-        self.B = str(self.B.__str__())
-        self.C = str(self.C.__str__())
-        self.D = str(self.D.__str__())
 
         available_answers = ["A", "B", "C", "D"]
 
@@ -173,7 +150,7 @@ class BaseQuestionModel:
     Class for formatting new questions and later turning each entry into its own JSON file.
     """
 
-    question_text: HTMLString.__str__
+    question_text: str
     alternatives: AlternativeModel
     discipline: str
     area: str
@@ -293,10 +270,10 @@ if __name__ == "__main__":
     new_question = BaseQuestionModel(
         question_text=HTMLString(content="Test Question"),
         alternatives=AlternativeModel(
-            A=HTMLString(content="1"),
-            B=HTMLString(content="2"),
-            C=HTMLString(content="3"),
-            D=HTMLString(content="4"),
+            A="1",
+            B="2",
+            C="3",
+            D="4",
             answer="A"
         ),
         discipline="MATEMÁTICA",
