@@ -6,3 +6,7 @@ from django.http import HttpResponse
 
 def index(response):
     return HttpResponse("WORKING")
+
+
+def home(response):
+    return render(response, "main/home.html")

@@ -38,24 +38,35 @@ class Subject(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
+class Exam(models.Model):
+    name = models.CharField(max_length=15)
+
+    def __str__(self):
+        return str(self.name)
+
+
+# TODO: ADD IMAGE SIZE RESTRICTIONS FOR BOTH THE AUX AND THE SOLVED QUESTION
 class Question(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     question_text = models.TextField(max_length=400)
     subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
 
-    alt_a = models.CharField(max_length=100)
-    alt_b = models.CharField(max_length=100)
-    alt_c = models.CharField(max_length=100)
-    alt_d = models.CharField(max_length=100)
+    alt_A = models.CharField(max_length=100)
+    alt_B = models.CharField(max_length=100)
+    alt_C = models.CharField(max_length=100)
+    alt_D = models.CharField(max_length=100)
     answer_alt = models.CharField(max_length=1, validators=[validate_alternative_answer])
 
     difficulty_level = models.IntegerField(validators=[validate_difficulty_range], default=3)
 
-    auxiliary_image = models.ImageField()
-    solution_image = models.ImageField()
+    exam_name = models.ForeignKey(Exam, on_delete=models.DO_NOTHING, blank=True, null=True)
+    exam_year = models.IntegerField(blank=True, null=True)
+
+    auxiliary_image = models.ImageField(null=True, blank=True)
+    solution_image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return self.id
+        return str(self.subject) + " / " + str(self.id)
