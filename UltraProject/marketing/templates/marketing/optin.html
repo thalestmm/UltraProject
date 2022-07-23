@@ -17,7 +17,7 @@
 
 {% block main_div_open %}
 <div id="main" class="bg-image container-fluid"
-     style="{% load static %} background-image: url('{% static 'marketing/media/{{associated_image_filename}}' %}');
+     style="{% load static %} background-image: url('{% static 'marketing/media/' %}{{associated_image_filename}}');
      height: 100vh; background-attachment: fixed; background-size: cover; background-position: center;">
 {% endblock %}
 
