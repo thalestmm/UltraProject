@@ -1,17 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from .forms import LeadOptInForm
 from .models import Lead, LeadLabel
+from django.contrib.auth.decorators import user_passes_test
+from .forms import EmailCampaignForm
 
 
 # Create your views here.
 def index(request):
-    return render(request, "marketing/base.html")
+    return HttpResponseRedirect("/")
 
 
 def lead_optin(request, lead_label):
     label = LeadLabel.objects.get(name=lead_label)
-    print(label.associated_image)
+    print(LeadLabel.objects.all())
     if not label:
         return Http404()
 
@@ -33,3 +34,13 @@ def thank_you(request, lead_label):
         return Http404()
 
     return render(request, "marketing/ty_page.html")
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def email_campaign(request):
+    form = EmailCampaignForm()
+    if request.method == "POST":
+        if form.is_valid():
+            pass
+
+    return render(request, "marketing/email_campaign.html", {"form": form})
