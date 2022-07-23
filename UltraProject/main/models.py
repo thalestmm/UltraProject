@@ -9,7 +9,7 @@ def validate_alternative_answer(value):
     value = value.upper()
     available_range = ["A", "B", "C", "D"]
     if value not in available_range:
-        raise ValidationError(f"{value} is not an available answer alternative")
+        raise ValidationError(f"Answer alternative must be either A, B, C or D. '{value}' is not accepted")
 
 
 def validate_difficulty_range(value):
@@ -52,7 +52,8 @@ class Exam(models.Model):
 class Question(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     question_text = models.TextField(max_length=400)
-    subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING)
+
+    subject = models.ForeignKey(Subject, on_delete=models.RESTRICT)
 
     alt_A = models.CharField(max_length=100)
     alt_B = models.CharField(max_length=100)
@@ -62,7 +63,7 @@ class Question(models.Model):
 
     difficulty_level = models.IntegerField(validators=[validate_difficulty_range], default=3)
 
-    exam_name = models.ForeignKey(Exam, on_delete=models.DO_NOTHING, blank=True, null=True)
+    exam_name = models.ForeignKey(Exam, on_delete=models.SET_NULL, blank=True, null=True)
     exam_year = models.IntegerField(blank=True, null=True)
 
     auxiliary_image = models.ImageField(null=True, blank=True)
