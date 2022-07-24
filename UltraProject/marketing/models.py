@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 # Create your models here.
 
@@ -19,3 +20,19 @@ class Lead(models.Model):
 
     def __str__(self):
         return str(self.label) + " / " + str(self.email)
+
+
+class Email(models.Model):
+    message = models.CharField(max_length=1000)
+    label = models.ForeignKey(LeadLabel, on_delete=models.SET_NULL, null=True, blank=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    def __str__(self):
+        return str(self.label) + " / " + str(self.id)
+
+
+# TODO: FIND A WAY TO ESTABLISH ORDER FOR EVERY EMAIL - JSON FIELDS?
+class EmailSequence(models.Model):
+    emails = models.ManyToManyField(Email)
+    hours_between_emails = models.IntegerField()
+    label = models.ForeignKey(LeadLabel, on_delete=models.SET_NULL, null=True, blank=True)

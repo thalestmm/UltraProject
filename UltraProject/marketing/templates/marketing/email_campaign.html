@@ -6,7 +6,7 @@
     <div class="container-sm position-absolute top-50 start-50 translate-middle p-5">
         <div class="row mx-auto">
             <div class="col-md-3"></div>
-            <div class="col-md shadow rounded-3 bg-body p-5 mb-10"  id="content">
+            <div class="col-md shadow rounded-3 bg-body p-5 m-2"  id="content">
                 <h2 class="text-center">New Email Campaign</h2><br>
                 <form method="post">
                     {% csrf_token %}
@@ -14,6 +14,8 @@
                     <br>
                     <div class="d-grid gap-3 text-center">
                         <button type="submit" class="btn btn-primary">Send Campaign</button>
+                        <div id="FormHelp" class="form-text">OBS: This campaign <strong>won't</strong> be stored on the database.</div>
+
                     </div>
                 </form>
             </div>
