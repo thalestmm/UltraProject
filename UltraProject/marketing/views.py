@@ -36,6 +36,29 @@ def thank_you(request, lead_label):
     return render(request, "marketing/ty_page.html")
 
 
+def unsubscribe_from_mailing_list(request, user_uuid):
+    try:
+        user = Lead.objects.get(uuid=user_uuid)
+    except:
+        raise Http404()
+
+    user_email = user.email
+
+    if request.method == "POST":
+        if "abort" in request.POST:
+            pass
+        if "unsubscribe" in request.POST:
+            target = Lead.objects.filter(email=user_email)
+
+            for lead in target:
+                lead.email_mkt = False
+                lead.save()
+
+        return HttpResponseRedirect("/")
+
+    return render(request, "marketing/unsubscribe.html", {"fname": user.fname})
+
+
 @user_passes_test(lambda u: u.is_superuser)
 def email_campaign(request):
     form = EmailCampaignForm()

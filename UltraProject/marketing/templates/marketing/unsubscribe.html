@@ -1,0 +1,26 @@
+{% extends "marketing/base.html" %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md justify-content-center rounded p-3 shadow">
+        <h2>É uma pena ver você partir, {{fname}}!</h2>
+        <hr><br>
+        <p>Você será descadastrado desta lista de emails.</p>
+        <p>Por favor, preencha o motivo pelo qual não deseja mais ser contatado pela nossa equipe:</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-3 text-center">
+                <button type="submit" name="unsubscribe" class="btn btn-warning">Confirmar minha exclusão</button>
+            </div>
+            <br>
+            <div class="d-grid gap-6 text-center">
+                <button type="submit" name="abort" class="btn btn-outline-dark">Cancelar</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}
