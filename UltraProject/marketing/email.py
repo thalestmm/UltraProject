@@ -1,0 +1,2 @@
+# TODO: ADD STMP EMAIL FUNCTIONALITIES
+# smtp.hostinger.com

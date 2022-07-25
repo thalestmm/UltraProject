@@ -4,6 +4,8 @@ from .models import Lead, LeadLabel, UnsubscribeEvent, UnsubscribeReason
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EmailCampaignForm, UnsubscribeForm
 
+from django.core.exceptions import ValidationError
+
 
 # Create your views here.
 def index(request):
@@ -39,7 +41,7 @@ def thank_you(request, lead_label):
 def unsubscribe_from_mailing_list(request, user_uuid):
     try:
         user = Lead.objects.get(uuid=user_uuid)
-    except:
+    except ValidationError:
         raise Http404()
 
     user_email = user.email
