@@ -1,5 +1,9 @@
 {% extends "marketing/base.html" %}
 
+{% block title %}Cancelar a Inscrição{% endblock %}
+
+{% load crispy_forms_tags %}
+
 {% block content %}
 <br>
 <div class="row">
@@ -11,6 +15,7 @@
         <p>Por favor, preencha o motivo pelo qual não deseja mais ser contatado pela nossa equipe:</p>
         <form method="post">
             {% csrf_token %}
+            {{ form|crispy }}
             <div class="d-grid gap-3 text-center">
                 <button type="submit" name="unsubscribe" class="btn btn-warning">Confirmar minha exclusão</button>
             </div>

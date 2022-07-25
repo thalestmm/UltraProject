@@ -21,6 +21,9 @@ class Lead(models.Model):
     label = models.ForeignKey(LeadLabel, on_delete=models.SET_NULL, null=True, blank=True)
     email_mkt = models.BooleanField(default=True, editable=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return str(self.label) + " / " + str(self.email) + " / " + str(self.uuid)
 
@@ -40,3 +43,24 @@ class EmailSequence(models.Model):
     emails = models.ManyToManyField(Email)
     hours_between_emails = models.IntegerField()
     label = models.ForeignKey(LeadLabel, on_delete=models.SET_NULL, null=True, blank=True)
+
+
+class UnsubscribeReason(models.Model):
+    text = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        ordering = ["text"]
+
+
+class UnsubscribeEvent(models.Model):
+    reason = models.ForeignKey(UnsubscribeReason, on_delete=models.SET_NULL, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.reason) + " / " + str(self.timestamp.date())
+
+    class Meta:
+        ordering = ["timestamp"]

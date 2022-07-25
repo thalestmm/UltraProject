@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from .models import Lead, LeadLabel
+from .models import Lead, LeadLabel, UnsubscribeEvent, UnsubscribeReason
 from django.contrib.auth.decorators import user_passes_test
-from .forms import EmailCampaignForm
+from .forms import EmailCampaignForm, UnsubscribeForm
 
 
 # Create your views here.
@@ -44,7 +44,11 @@ def unsubscribe_from_mailing_list(request, user_uuid):
 
     user_email = user.email
 
+    form = UnsubscribeForm()
+
     if request.method == "POST":
+        form = UnsubscribeForm(request.POST)
+
         if "abort" in request.POST:
             pass
         if "unsubscribe" in request.POST:
@@ -54,9 +58,15 @@ def unsubscribe_from_mailing_list(request, user_uuid):
                 lead.email_mkt = False
                 lead.save()
 
+            if form.is_valid():
+                reason = form.cleaned_data['reason']
+
+                event = UnsubscribeEvent(reason=reason)
+                event.save()
+
         return HttpResponseRedirect("/")
 
-    return render(request, "marketing/unsubscribe.html", {"fname": user.fname})
+    return render(request, "marketing/unsubscribe.html", {"fname": user.fname, "form": form})
 
 
 @user_passes_test(lambda u: u.is_superuser)
