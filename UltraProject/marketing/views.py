@@ -21,12 +21,13 @@ def lead_optin(request, lead_label):
     form = LeadExamForm()
 
     if request.method == "POST":
+        print(request.POST)
         form = LeadExamForm(request.POST)
 
         if form.is_valid():
             lead = Lead(
-                fname=request.POST.fname,
-                email=request.POST.email,
+                fname=request.POST['fname'],
+                email=request.POST['email'],
                 exam=form.cleaned_data['exam'],
                 label=label,
             )
