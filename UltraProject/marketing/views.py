@@ -74,6 +74,7 @@ def email_campaign(request):
     form = EmailCampaignForm()
     if request.method == "POST":
         if form.is_valid():
+            # SEND EMAIL -> INCLUDING LEAD DATA FOR CUSTOM EMAILS
             pass
 
     return render(request, "marketing/email_campaign.html", {"form": form})

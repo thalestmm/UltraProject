@@ -28,6 +28,7 @@ class Lead(models.Model):
         return str(self.label) + " / " + str(self.email) + " / " + str(self.uuid)
 
 
+# TODO: FIND A WAY TO CUSTOMIZE EACH MESSAGE WITH THE LEAD DATA: FNAME, EMAIL, UUID (FOR UNSUBSCRIBING)
 class Email(models.Model):
     subject = models.CharField(max_length=100)
     message = models.CharField(max_length=1000)
