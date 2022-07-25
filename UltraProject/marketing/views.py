@@ -77,6 +77,8 @@ def unsubscribe_from_mailing_list(request, user_uuid):
 def email_campaign(request):
     form = EmailCampaignForm()
     if request.method == "POST":
+        form = EmailCampaignForm(request.POST)
+
         if form.is_valid():
             # SEND EMAIL -> INCLUDING LEAD DATA FOR CUSTOM EMAILS
             pass
