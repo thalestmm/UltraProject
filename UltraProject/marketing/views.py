@@ -83,4 +83,6 @@ def email_campaign(request):
             # SEND EMAIL -> INCLUDING LEAD DATA FOR CUSTOM EMAILS
             pass
 
-    return render(request, "marketing/email_campaign.html", {"form": form})
+        return HttpResponseRedirect("/mkt/email-campaign")
+
+    return render(request, "marketing/email_campaign.html", {"form": form, "redirect": False})
