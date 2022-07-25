@@ -1,6 +1,10 @@
 from django.db import models
 import uuid
 
+import sys
+sys.path.append("..")
+from main.models import Exam
+
 # Create your models here.
 
 
@@ -18,6 +22,9 @@ class Lead(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fname = models.CharField(max_length=20)
     email = models.EmailField()
+
+    exam = models.ForeignKey(Exam, null=True, on_delete=models.SET_NULL)
+
     label = models.ForeignKey(LeadLabel, on_delete=models.SET_NULL, null=True, blank=True)
     email_mkt = models.BooleanField(default=True, editable=True)
 

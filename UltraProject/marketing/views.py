@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from .models import Lead, LeadLabel, UnsubscribeEvent
 from django.contrib.auth.decorators import user_passes_test
-from .forms import EmailCampaignForm, UnsubscribeForm
+from .forms import EmailCampaignForm, UnsubscribeForm, LeadExamForm
 
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
@@ -18,16 +18,23 @@ def lead_optin(request, lead_label):
     except ObjectDoesNotExist:
         raise Http404()
 
+    form = LeadExamForm()
+
     if request.method == "POST":
-        lead = Lead(
-            fname=request.POST.get("fname"),
-            email=request.POST.get("email"),
-            label=label,
-        )
-        lead.save()
+        form = LeadExamForm(request.POST)
+
+        if form.is_valid():
+            lead = Lead(
+                fname=request.POST.fname,
+                email=request.POST.email,
+                exam=form.cleaned_data['exam'],
+                label=label,
+            )
+            lead.save()
+
         return HttpResponseRedirect(f"/mkt/obrigado/{lead_label}")
 
-    return render(request, "marketing/optin.html", {"associated_image_filename": str(label.associated_image)})
+    return render(request, "marketing/optin.html", {"form": form, "associated_image_filename": str(label.associated_image)})
 
 
 def thank_you(request, lead_label):
@@ -85,4 +92,4 @@ def email_campaign(request):
 
         return HttpResponseRedirect("/mkt/email-campaign")
 
-    return render(request, "marketing/email_campaign.html", {"form": form, "redirect": False})
+    return render(request, "marketing/email_campaign.html", {"form": form})

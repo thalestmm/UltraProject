@@ -2,6 +2,9 @@
 
 {% block title %}Inscreva-se!{% endblock %}
 
+{% load crispy_forms_tags %}
+
+
 {% block head %}
     <style>
         #content {
@@ -36,6 +39,9 @@
                 <label for="InputEmail" class="form-label">Seu melhor email *</label>
                 <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="email" required>
                 <div id="emailHelp" class="form-text">Não vamos compartilhar o seu email com mais ninguém.</div>
+              </div>
+              <div class="mb-3">
+                {{ form|crispy }}
               </div>
             <div class="d-grid gap-3 text-center">
                 <button type="submit" class="btn btn-primary">Confirmar</button>
