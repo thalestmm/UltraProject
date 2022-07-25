@@ -29,11 +29,11 @@
         <form method="post">
             {% csrf_token %}
               <div class="mb-3">
-                <label for="InputFname" class="form-label">Seu primeiro nome</label>
+                <label for="InputFname" class="form-label">Seu primeiro nome *</label>
                 <input type="text" class="form-control" id="InputFname" name="fname" required>
               </div>
               <div class="mb-3">
-                <label for="InputEmail" class="form-label">Seu melhor email</label>
+                <label for="InputEmail" class="form-label">Seu melhor email *</label>
                 <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="email" required>
                 <div id="emailHelp" class="form-text">Não vamos compartilhar o seu email com mais ninguém.</div>
               </div>

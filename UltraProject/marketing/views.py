@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from .models import Lead, LeadLabel, UnsubscribeEvent, UnsubscribeReason
+from .models import Lead, LeadLabel, UnsubscribeEvent
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EmailCampaignForm, UnsubscribeForm
 
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 
 
 # Create your views here.
@@ -13,10 +13,10 @@ def index(request):
 
 
 def lead_optin(request, lead_label):
-    label = LeadLabel.objects.get(name=lead_label)
-    print(LeadLabel.objects.all())
-    if not label:
-        return Http404()
+    try:
+        label = LeadLabel.objects.get(name=lead_label)
+    except ObjectDoesNotExist:
+        raise Http404()
 
     if request.method == "POST":
         lead = Lead(
@@ -31,9 +31,10 @@ def lead_optin(request, lead_label):
 
 
 def thank_you(request, lead_label):
-    label = LeadLabel.objects.get(name=lead_label)
-    if not label:
-        return Http404()
+    try:
+        label = LeadLabel.objects.get(name=lead_label)
+    except ObjectDoesNotExist:
+        raise Http404()
 
     return render(request, "marketing/ty_page.html")
 
@@ -71,6 +72,7 @@ def unsubscribe_from_mailing_list(request, user_uuid):
     return render(request, "marketing/unsubscribe.html", {"fname": user.fname, "form": form})
 
 
+# TODO: ADD FUNCTIONALITY TO SEND EMAIL TO ALL REGISTERED LEADS (THAT HAVE EMAIL_MKT == TRUE)
 @user_passes_test(lambda u: u.is_superuser)
 def email_campaign(request):
     form = EmailCampaignForm()
