@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404
 from .models import Lead, LeadLabel, UnsubscribeEvent
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EmailCampaignForm, UnsubscribeForm, LeadExamForm
