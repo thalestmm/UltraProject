@@ -2,6 +2,35 @@
 
 {% block title %}Método Ultra{% endblock %}
 
+{% block style %}
+{{ block.super }}
+<style>
+.writing {
+    font-size: 17px;
+    padding: 9px 0px 0px 0px;
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>Home Page</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1 col-sm-2"></div>
+        <div class="col-md p-3" id="main-col">
+            <h1 class="text-center" style="font-size: 38px;"><strong>Uma nova experiência de aprendizado</strong></h1>
+            <p class="writing text-center">Com uma concorrência cada vez mais elevada e qualificada, tentar utilizar os
+                mesmos métodos de sempre não é a solução.</p>
+            <p class="writing text-center">A verdade é que para qualquer área da vida, aprender a se
+                diferenciar da maioria das pessoas é essencial para alcançar o sucesso.</p>
+            <p class="writing text-center">E, quando falamos da preparação para provas do vestibular ou concursos, a chave
+                para se diferenciar está na escolha de um método de estudo adequado.</p>
+            <p class="writing text-center">Um método de estudo é uma forma pensada, testada e otimizada para atender às três
+                principais necessidades durante a preparação: <strong>compreensão, retenção</strong> e <strong>foco</strong>.</p>
+            <p class="writing text-center">E isso é exatamente o que o <strong>Método Ultra</strong> vai te entregar:
+                os fundamentos que vão te permitir estudar sozinho da forma mais otimizada possível, levando você cada vez
+                mais perto do seu objetivo, de alcançar a aprovação.</p>
+        </div>
+        <div class="col-1 col-sm-2"></div>
+    </div>
+</div>
 {% endblock %}

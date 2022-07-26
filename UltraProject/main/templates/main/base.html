@@ -7,8 +7,23 @@
     <title>{% block title %}Método Ultra{% endblock %}</title>
     {% block style %}
         <style>
-            #body {
+            body {
                 background-color: #FBFBFB;
+            }
+
+            #footer {
+               position:absolute;
+               bottom:0;
+               height:2.5rem;
+            }
+
+            #content {
+                padding-bottom:2.5rem;
+            }
+
+            #main {
+                position: relative;
+                min-height: 100vh;
             }
         </style>
     {% endblock %}
@@ -19,39 +34,45 @@
 </head>
 <body id="body">
     {% block main_div_open %}<div  id="main" class="container-fluid">{% endblock %}
-            {% block navbar %}
-            <nav class="navbar navbar-expand-md p-3">
-              <div class="container-fluid">
-                  <a class="navbar-brand" href="/"><strong>Método Ultra</strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="/resources" target="_self">Recursos</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/support" target="_self">Suporte</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/pricing" target="_self">Preços</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-            {% endblock %}
-        <div id="content">
-            {% block content %}
+        {% block navbar %}
+        <nav class="navbar navbar-expand-md p-3">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                  {% load static %}
+                  <img src="{% static 'main/media/logo_favicon.svg' %}" width="30" height="24" class="d-inline-block align-text-top">
+                  <strong>Método Ultra</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/login" target="_self">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/resources" target="_self">Recursos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/support" target="_self">Suporte</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/pricing" target="_self">Preços</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        {% endblock %}
+        <div class="container-fluid" id="content">
+        {% block content %}
 
-            {% endblock %}
+        {% endblock %}
         </div>
-        <div id="footer" class="footer">
-            {% block footer %}
-
-            {% endblock %}
-        </div>
+        {% block footer %}
+        <footer id="footer" class="container-fluid" align="center">
+            <p style="font-size: 12px;">Método Ultra 2022 - Todos os direitos reservados</p>
+        </footer>
+        {% endblock %}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
