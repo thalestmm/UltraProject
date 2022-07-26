@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>{% block title %}Método Ultra{% endblock %}</title>
+    {% load static %}  <link rel="icon" type="image/x-icon" href="{% static 'main/media/logo_favicon.ico' %}">
     {% block style %}
         <style>
             body {
@@ -13,6 +15,7 @@
 
             #footer {
                position:absolute;
+               text-align: center;
                bottom:0;
                height:2.5rem;
             }
@@ -29,54 +32,58 @@
     {% endblock %}
 
     {% block head %}
-
     {% endblock %}
+
 </head>
 <body id="body">
-    {% block main_div_open %}<div  id="main" class="container-fluid">{% endblock %}
-        {% block navbar %}
-        <nav class="navbar navbar-expand-md p-3">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="/">
-                  {% load static %}
-                  <img src="{% static 'main/media/logo_favicon.svg' %}" width="30" height="24" class="d-inline-block align-text-top">
-                  <strong>Método Ultra</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/login" target="_self">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/resources" target="_self">Recursos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/support" target="_self">Suporte</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/pricing" target="_self">Preços</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        {% endblock %}
-        <div class="container-fluid" id="content">
-        {% block content %}
+    {% block main_div_open %}
+    <div  id="main" class="container-fluid" height="100vh">
+    {% endblock %}
 
-        {% endblock %}
+    {% block navbar %}
+    <nav class="navbar navbar-expand-md p-3">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+              {% load static %}
+              <img src="{% static 'main/media/logo_favicon.svg' %}" width="30" height="24" class="d-inline-block align-text-top">
+              <strong>Método Ultra</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/login" target="_self">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/resources" target="_self">Recursos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/support" target="_self">Suporte</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pricing" target="_self">Preços</a>
+            </li>
+          </ul>
         </div>
-        {% block footer %}
-        <footer id="footer" class="container-fluid" align="center">
-            <p style="font-size: 12px;">Método Ultra 2022 - Todos os direitos reservados</p>
-        </footer>
-        {% endblock %}
+      </div>
+    </nav>
+    {% endblock %}
+    <div class="container-fluid" id="content">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+    {% block footer %}
+    <footer id="footer" class="container-fluid">
+        <small style="font-size: 12px;">Método Ultra 2022</small>
+    </footer>
+    {% endblock %}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>-->
 <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>-->
+
 </body>
 </html>

@@ -8,13 +8,17 @@ def index(response):
     return HttpResponse("WORKING")
 
 
-def home(response):
-    return render(response, "main/home.html")
+def home(request):
+    return render(request, "main/home.html")
 
 
-def terms_of_use(response):
-    return render(response, "main/terms.html")
+def pricing(request):
+    return render(request, "main/pricing.html")
 
 
-def privacy_policy(response):
-    return render(response, "main/privacy_policy.html")
+def terms_of_use(request):
+    return render(request, "main/terms.html")
+
+
+def privacy_policy(request):
+    return render(request, "main/privacy_policy.html")

@@ -1,7 +1,113 @@
 {% extends "main/base.html" %}
 
-{% block title %}Preços{% endblock %}
+{% block title %}Escolha o seu plano{% endblock %}
+
+{% block style %}
+{{ block.super }}
+<style>
+    .price {
+        font-weight: bold;
+        font-size: 38px;
+    }
+
+    .full-price {
+        font-size: 12px;
+        margin: 10px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-
+<div class="row">
+    <div class="col-1 col-sm-2 col-md-2"></div>
+    <div class="col">
+        <h1 align="center" style="font-size:50px;"><strong>Escolha o seu plano</strong></h1>
+        <br>
+        <div class="card-group row row-cols-1 row-cols-xl-3 g-4">
+          <div class="col p-2">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body" align="center">
+                <h3 class="card-title" align="center" style="font-size: 32px;"><strong>Básico</strong></h3>
+                <div align="left">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Acesso a todas as aulas</li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Atualizações e bônus</li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> 1 ano de acesso</li>
+                    </ul>
+                </div>
+                <br>
+                <h4 class="price">R$197,00</h4>
+                <small class="full-price">OU 12X DE R$19,98</small>
+                <br><br>
+                <button class="btn btn-lg btn-light shadow-sm"
+                        type="button">
+                    <strong>Entrar agora</strong>
+                </button>
+                  <br><br>
+              </div>
+            </div>
+          </div>
+          <div class="col p-2">
+            <div class="card h-100 shadow">
+                <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-warning shadow-sm"
+                        style="z-index:1; font-size:1rem;">
+                    Mais vendido
+                  </span>
+              <div class="card-body" align="center">
+                <h3 class="card-title" align="center" style="font-size: 32px;"><strong>Avançado</strong></h3>
+                <div align="left">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Plano Básico +</li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Banco de Questões</li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Estatística Individual</li>
+                    </ul>
+                </div>
+                <br>
+                <h4 class="price">R$297,00</h4>
+                <small class="full-price">OU 12X DE R$29,98</small>
+                <br><br>
+                <button class="btn btn-lg btn-dark shadow-sm"
+                        type="button">
+                    <strong>Entrar agora</strong>
+                </button>
+                  <br><br>
+              </div>
+            </div>
+          </div>
+          <div class="col p-2">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body" align="center">
+                <h3 class="card-title" align="center" style="font-size: 32px;"><strong>Mentorado</strong></h3>
+                <div align="left">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Plano Avançado +</li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> 5 mentorias individuais</li>
+                        <li class="list-group-item">
+                            <i class="bi bi-check-lg" style="font-size: 1.2rem;"></i> Acesso vitalício</li>
+                    </ul>
+                </div>
+                <br>
+                <h4 class="price">R$697,00</h4>
+                <small class="full-price">OU 12X DE R$69,98</small>
+                <br><br>
+                <button class="btn btn-lg btn-light shadow-sm"
+                        type="button">
+                    <strong>Entrar agora</strong>
+                </button>
+                  <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-1 col-sm-2 col-md-2"></div>
+</div>
 {% endblock %}
